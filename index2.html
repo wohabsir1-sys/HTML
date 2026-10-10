@@ -1,0 +1,2302 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MS Access Rule | HTML বাংলা একাডেমি</title>
+<style>
+  body {
+    color: black;
+    background-color: powderblue;
+    font-family: "Kalpurush", "Noto Sans Bengali", "Siyam Rupali", "Times New Roman", serif;
+    line-height: 1.8;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 16px;
+  }
+  .back-link {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 8px 16px;
+    background: #0b8f7a;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  .back-link:hover { background: #086b5b; }
+  li { margin-bottom: 14px; }
+</style>
+</head>
+<body>
+<a class="back-link" href="index.html">&larr; হোমে ফিরে যান</a>
+
+<h1>MS Access Rule</h1>
+
+<ol> 
+<li>
+লিংক দেওয়া জন্য কোডঃ < a href="url"> লেখা দিন  < /a >
+<br><br>
+<li>
+<U>	DLookUp নাম/ঠিকানা আনার জন্য :</U> =DLookUp("F N","T N")<br>
+DLookup ছবির জন্য Imageতৈরি করে =DLookUp("F N","T N")<br>
+Or, Code দিয়ে DLookup ছবির জন্য<br>
+ Imageতৈরি করে নাম দিব img_pic তার পর ফরম সিলেক্ট করে  প্রপারটিজ Event এর নিচ থেকে -On load-[Event Procedure]- এর ডানে *** (তিনটি ডট) কিক্ল-Private Sub Form_Load () এর নিচে উক্ত কোডটি লিখব Me.img_pic.Picture = DLookUp("F N","T N")<br>এর পরে Ok </li>
+
+
+<br>
+	
+	<li>
+<U>DLookUp এ লেখা না দেখা যাওয়া/সাদা হয়ে যাওয়া: </U><br>
+DLookUp Field সিলেক্ট করে প্রপারটিজ --Data এর নিচ থেকে Enabled এর ডানে No এবং Locked- Yes
+
+
+<br>
+<br>
+	
+	<li>
+<U>DSum/যোগফল:  </U>=DSum("admitionfee","Fee_Q_Fee_Report","Class='নবম' and group='DM'")
+
+
+<br>
+<br>
+	
+	<li>
+<U>গত 30 দিনের যোগফল:  </U>=DSum("Total","Total","saleDate>=#" & Date()-30 & "#")
+<br>
+<br>
+<li>
+<U>DCount যোগফল:   </U>
+নবম শ্রেনির শিক্ষার্থী সংখ্যা জানার জন্য=DCount("Class","T N","Class='নবম'")<br>
+নবম শ্রেনির GM গ্রুপের শিক্ষার্থী  সংখ্যা জানার জন্য=DCount("group","T N","Class='নবম' and group='GM'")<br>
+নবম শ্রেনির DM গ্রুপের মেয়ে কত জন্য জানার জন্য =DCount("Gender","T N","Class='নবম' and group='DM'and Gender='মেয়ে'")</li>
+2021 সনের দশম পাশ মেকানিক্যাল এর ছাত্র সংখ্যা =DCount("Passing_Year","Vocational_student_IX","Class='দশম পাশ' and group='GM'  and S_gender='ছাত্র'  and Passing_Year='2021'")
+
+<br>
+<br>
+<li>
+<U>	Query দিয়ে যে ফরমে আছি ঐ ফরমকে রিপোটে/ফরমে দেখানোর জন্য  /  এক জন ছাত্রের প্রত্যায়ন আনার জন্য: </U><br>
+টেবিলকে দেখিয়ে কুয়েরি তৈরি করব। <br>
+উক্ত কুয়েরিকে দেখিয়ে রিপোট তৈরি করব।<br>
+টেবিলকে দেখিয়ে ফরম তৈরি করব (One_Student_Form)। ফরমে রিপোটকে দেখিয়ে একটি প্রিন্ট বাটন সেট করব (Report Opration -Preview Report-)<br>
+Queryর  Design View তে গিয়ে (যেমন সিরিয়াল দিয়ে খোজার জন্য ) Criteria তে  	[Forms]![One_Student_Formফরমের নাম]![SN]<br>
+</li>
+
+<br>
+<li>
+<U> 
+	যে ফরমে আছি ঐ ফরমকে রিপোটে/ফরমে দেখানোর জন্য  /  এক জন ছাত্রের প্রত্যায়ন আনার জন্য   :</U><br>
+	টেবিলকে দেখিয়ে ফরম তৈরি করব। ফরমে রিপোটকে দেখিয়ে একটি প্রিন্ট বাটন সেট করব (ভিউ প্রিন্ট প্রিভিউ)---- প্রিন্ট বাটনকে সিলেক্ট করে Design- থেকে  Properties- – Event এর নিচ থেকে -On Click [Embedded Macro]এর ডানে *** (তিনটি ডট) কিক্ল- Where Condition    এর ঘরে ="[S_ID]=" & [S_ID]লিখব Windod Mode কে Dialog এবং ওকে।<br>
+	<br>
+	অথবা, 
+	Where Condition    এর ঘরে [S_ID]=[Forms]![Invoice_Form]![S_ID]লিখব Windod Mode কে Icon এবং ওকে।
+<br>
+<br>
+<li>
+<U>	Form এ মোট যোগ করা 	</U>=sum(Nz([jan]))     ডাটা সোস দেখাতে হবে।
+=sum(Nz([jan]))+sum(Nz([feb]))/   =Nz([Text22])+Nz([Text23])
+  Form এর Continuous Forms ভিউতে যোগ করা: Footer-  এর মধ্যে  Unbound box এর মাধ্যমে =sum([jan])
+  Form এর Continuous Forms ভিউতে Yes/No যোগ করা: Footer-  এর ঘরে =(sum([jan]))*-1</li>
+
+<br>
+<li>
+<U>	Report এ মোট যোগ করা:</U> রিপোট এর ঘরে ডান বাটনে কিক্ল ReportHeader/Footer- এখানে Report Footer-  এর মধ্যে  Unbound box এর মাধ্যমে =sum([jan])
+Report Footer- এর মধ্যে  ছাত্র কত জন আছে জানা  =Count(IIF([gender]=”male”,0))</li>
+
+
+<br>
+<li>
+<U>	Report এ Sort, Total ও Background Color :</U><br>
+Report এর  ডিজাইন ভিউতে গিয়ে Design- Group & Sort নিচের থেকে Add Sort প্রয়োজনীয় করব, More থেকে With- এর ড্রপ ডাউন কিল্ক Total On এর ঘরে যা মোট করতে চাই তা সিলেক্ট করে Type- Sum ,Show Grand Total এর ডানের চেক বক্স কিল্ক। Background Color না রাখতে চাইলে Detail এর ঘরে মাউস রেখে ডান বাটন কিক্ল Alternative Color/Back-Color -None
+
+
+
+<br>
+<li>
+<U>	FROM/Report Maximize   করাঃ</U> FROM/Report সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On load-[Event Procedure]- এর ডানে *** (তিনটি ডট) কিক্ল- DoCmd.Maximize এর পরে  Ok
+Rectangle পুরা চিত্রে দখানো: Rectangle সিলেক্ট করে Format -Horizontal Anchor-Both </li>
+
+<br>
+<li>
+<U>	নতুন ফরম আনা জন্যঃ	</U>	From -Property-Event-On load-[Event Procedure]-
+     DoCmd.GoToRecord acDataForm, "Form N", acNewRec</li>
+
+<br>
+<li>
+<U>Macro এর মাধ্যমে নতুন ফরম আনা জন্যঃ</U> Form এর  ডিজাইন ভিউতে গিয়ে সম্পূর্ণ ফরম সিলেক্ট করে Design  -Property-Event-On load- এর ডানে *** (তিনটি ডট) Macro Builder -Ok-<br>
+OpenForm-<br>
+FormName এর ঘরে যে ফরম ওপেন করতে চাই তা সিলেক্ট<br>
+View -Form<br>
+Data Mode-Add<br>
+Window-Normal<br>
+
+
+<br>
+তারপর পরের ঘরে GoToRecord<br>
+Object Type- Form<br>
+Object Name- এর ঘরে যে ফরম ওপেন করতে চাই তা সিলেক্ট<br>
+Record- New<br>
+Save-Close<br>
+Data এর নিচ থেকে ২য়, ৩য়, ৪র্থ, ৫ম টি Yes করতে হবে।<br>
+
+
+<br>
+<li>
+<U>	 বিয়োগ	:</U> CCur([total]-[total due])</li>
+
+<br>
+<li>
+
+<U>	ভাগ		: </U>CCur([basic]/[----])</li>
+
+<br>
+
+<li>
+<U>	মোট: কোন বিষয়ের মার্ক না থাকলেও যোগ  করাঃ</U> Nz([Bangla])+Nz([English])</li>
+
+<br>
+
+<li>
+<U>	গুন/শতকরা বের করাঃ </U>CCur([basic]*0.04)</li
+<br>
+<br>
+<li>
+
+
+
+<U>	bonus:</U>  IIf([basic]<=3000,300*2,IIf([basic]<=6500,300*4,IIf([basic]>6500,300*6)))</li>
+<br>
+
+<li>
+
+
+<U>	h loan:</U> IIf([basic]<5500,[basic]*0.25,IIf([basic]>=5500,[basic]*0.35))</li>
+
+<br>
+
+
+<li>
+<U>	বাটনে কার্সর নিলে হাত হয়ে যাওয়াঃ </U>বাটন-প্রপারটিজ -Other এর নিচ থেকে Cursor on Hover এর ডানে Hyperlink hand</li>
+
+<br>
+
+
+<li>
+
+
+<U>	Tab/Arrow key তে কার্সর না যাওয়াঃ </U>Field সিলেক্ট করে  প্রপারটিজ -Other এর নিচ থেকে Tab Stop এর ডানে No
+      অথবা, Feld সিলেক্ট করে  প্রপারটিজ -Data এর নিচ থেকে Enabled এর ডানে No এবং Locked- Yes</li>
+
+
+<br>
+
+<li>
+<U>	Buttons সাজানোঃ</U> Buttons সিলেক্ট করে  Arrange-Stacked-Remove, Control Padding-Narrow, Size/Space-To Tallest, Increase Vertical, Format - Quick Styles- Any, Change Shape-Rounded, Shape Effect, Shape Outline, Shape Fill, Font name, size, alien, Bold, Culor</li>
+
+
+<br>
+
+<li>
+<U>	Buttons উপরে/নিচে নেওয়া: </U>রিমোভ লেআউট এর আগে Buttons সিলেক্ট করে  Arrange–Move Up/Move Down</li>
+
+<br>
+
+
+<li>
+<U>	ফরম/রিপোর্ট ডিজাইন করাঃ</U>All থেকে  Pop UP- Yes, Navigation Buttons- NO, Record Selector – NO, Scroll Bars- Neither, Auto Center- Yes, Caption এ প্রয়োজনীয় নাম লিখব।</li>
+
+<br>
+
+<li>
+<U>	Default Picture সেট করাঃ </U>ফরমের ডিজাইন ভিউতে গিয়ে ছবির  আনবাউন্ড বক্স সিলেক্ট  All-Defult Picture- এর ডানে *** (তিনটি ডট) ক্লিক এখন .PNG ছবি দেখিয়ে দিব।</li>
+
+<br>
+
+
+<li>
+<U>	ছবি সেট করাঃ </U>ছবি সিলেক্ট করে প্রপারটিজ –All-Picture Alignment-Center, Picture Size Mode-Stretch, Width, Height, Back Color, Border Color ইত্যাদি দিব।</li>
+
+
+<br>
+<li>
+<U>	Buttons কি বোর্ড দিয়ে ছোট বড় করাঃ</U> Buttons সিলেক্ট করে (Shift+ডান এরো কি)/(Shift+বাম এরো কি)</li>
+
+<br>
+
+
+<li>
+<U>	Buttons একই সাইজ করাঃ </U>একটি বাটন ঠিক করে সিলেক্ট করে প্রপারটিজ Format এর নিচ থেকে Width- Copy করে অন্য সকল Buttons সিলেক্ট করে প্রপারটিজ Format এর নিচ থেকে Width- Paste করি তার পর এন্টার কি চাপি।</li>
+
+<br>
+
+
+<li>
+<U>	একটি বাটনে সকল ফরেমেট অন্য বাটনে নেওয়া	ঃ </U>বাটন সিলেক্ট করে Home -Format Painter কিক্ল(একের অদিক বাটন করতে হলে ডাবল কিক্ল) - প্রয়োজনীয় বাটনে কিক্ল।</li>
+
+
+<br>
+
+<li>
+<U>	MS Access পাসওয়ার্ড দেওয়া:</U> MS Access- File- Open- প্রয়োজনীয়-Open এর ড্রপ ডাউন- Open Exclusive- File-Info-Encrypt with password-পাসওয়াড দিয়ে-ok-ok</li>
+
+<br>
+
+<li>
+<U>	MS Access পাসওয়ার্ড বাদ দেওয়া:</U> MS Access- File- Open- প্রয়োজনীয়-Open এর ড্রপ ডাউন- Open Exclusive- File-Info-Decrypt Database-পাসওয়াড দিয়ে-ok-</li>
+
+<br>
+
+<li>
+<U>	Report এ ছেলে কত জন আছে জানা   ঃ</U>  রিপোট এর ঘরে ডান বাটনে কিক্ল ReportHeader/Footer- এখানে Report Footer-  এর মধ্যে  Unbound box এর মাধ্যমে =Count(IIF([gender]="male",0)) ডাটা সোস দেখাতে হবে।</li>
+
+<br>
+
+
+<li>
+<U>	Table এ  দশমিকের পর কোন সংখ্যা না রাখতে চাইলে	: </U>  ডিজাইন ভিউতে গিয়ে নিদিষ্ট ফিল্ড সিলেক্ট করে নিচের থেকে General  সিলেক্ট  Format থেকে Fixed এবং Decimal Places 0 দিব।</li>
+
+
+<br>
+<li>
+<U>	Table এর Caption সেট করা			: </U>ডিজাইন ভিউতে গিয়ে নিদিষ্ট ফিল্ড সিলেক্ট করে নিচের থেকে General  সিলেক্ট Caption এর ঘরে প্রয়োজনীয় লিখব। তখন তা ডাটা শিট ভিউতে দেখা যাবে।</li>
+
+
+<br>
+
+<li>
+<U>	Validation Rule 60 এর বেশি লিখতে না দেওয়া	:</U> ডিজাইন ভিউতে গিয়ে নিদিষ্ট ফিল্ড সিলেক্ট করে নিচের থেকে General  সিলেক্ট Validation Rule এর ঘরে  <61 লিখব।	Validation Text এর ঘরে  বাংলা বিষয়ের মার্ক 60 এর বেশি নয় লিখব।	</li>
+
+<br>
+
+<li>
+<U>	Table এর Default Value Date/Time সেট করা: </U>Table এর ডিজাইন ভিউতে গিয়ে Data type ঘরে Date/Time সিলেক্ট করে নিচের থেকে General  সিলেক্ট Default Value এর ঘরে =Now() লিখব। তখন তা ডাটা শিট ভিউতে সময় দেখা যাবে। অথবা, জন্ম তারিখ  DOB এর জন্য Default Value এর ঘরে =Date() লিখব।
+       Format এর ঘরে  dd-mm-yyyy অথবা       Format এর ঘরে  dd-mmm-yyyy
+       যে কোন স্থানে তারিখ ও সময় দেখানো জন্য টেক্স বক্সে  =Date()  এবং =Time()
+	   </li>
+	 <br><br>  
+	   
+<li>
+<U>	সিরিয়াল নং নিজের মত অটো করার জন্য ঃ </U>Table এর ডিজাইন ভিউতে Data type ঘরে AutoNumber সিলেক্ট করে নিচের থেকে General  সিলেক্ট Formate এর ঘরে “DM-”0000  লিখব। ভিউতে DM-0001, DM-0002....... দেখব।</li>
+<br><br>
+অথবা, ‍SQL কুয়েরিতে<br>
+  Alter Table [Table2 টেবিলের নাম]<br>
+Alter Column[ID ফিল্ড নাম ] counter(200 শুরুর নং,1 কত ঘর পর পর )<br>
+কুয়েরি সেভ করে তা আবার ওপেন করতে হবে। তারপর টেবিলে লিখলে তখন 200, 201, 202 আসবে।<br>
+
+<br><br>
+অথবা,  Roll নং Auto সিরিয়াল করাঃ <br>
+Table থেকে Continuous Form তৈরি করে এর ডিজাইন ভিউতে গিয়ে ফরম সিলেক্ট করে প্রোপারট্রিজ- ইভেন্ট - Before Insert- ....নিচের কোডটি লিখব।<br>
+
+roll = DMax("roll", "Table1") + 1<br>
+এখানে roll= যে ঘরটি Auto সিরিয়াল করতে চাই তা, এবং Table1= টেবিলের নাম<br>
+<br><br>
+Or, অথবা,  Roll নং Auto সিরিয়াল করাঃ <br>
+Table থেকে Continuous Form তৈরি করে এর ডিজাইন ভিউতে গিয়ে একটি Unbound বক্স তৈরি করে Control Sourcec <br>
+=IIf(IsNull([ID]),Null,DCount("ID","Table1","ID<" & [ID])+1) <br>
+এবং ফরম সিলেক্ট করে প্রোপারট্রিজ- ইভেন্ট - On Delete- ....নিচের কোডটি লিখব।<br>
+Private Sub Form_Delete(Cancel As Integer)<br>
+Me.Refresh<br>
+End Sub<br>
+
+
+<br>
+<br>
+<li>
+<U>	Age:</U> DateDiff("yyyy",[F N],Date()) & " Years"<br>
+
+OR, =DateDiff("yyyy",[S_Date_Of_Birth],Date()) & " বছর"<br>
+
+	</li>
+
+
+<br>
+<li>
+<U>	দুইটি তারিখ দিয়ে সয়স নির্ণয় করা (Age):</U> <br>
+ Int(([date2]-[date1])/365.2425)<br>
+ <br>
+
+<li><U>
+  সময় বিয়োগ করা Time :</U> <br>
+  DateDiff("n",[StartTime],[EndTime])/60
+  <br>
+ <br>
+<li>
+<U>	Table এর Default Value সেট করা		: </U>ডিজাইন ভিউতে গিয়ে নিদিষ্ট ফিল্ড সিলেক্ট করে নিচের থেকে General  সিলেক্ট Default Value এর ঘরে প্রয়োজনীয় লিখব। তখন তা ডাটা শিট ভিউতে দেখা যাবে।<br>
+</li>
+
+<br>
+
+<li>	Table এর ডিজাইন ভিউতে ফিল্ড সাজানো হয় এবং ডাটা শীট ভিউতে ডাটা টাইফ করা/ডাটা জমা হয়।</li>
+
+<br>
+
+<li>	ডিজাইন View তে কাজ করার পর সেভ করা লাগে এবং ডাটা শীট/ফরমভিউতে কাজ করার পর সেভ করা লাগে না।</li>
+
+<br>
+
+<li>
+	Table এর LookUp Wizard- জন্য আলাদা টেবিল তৈরী করা ভাল।</li>
+
+<br>
+
+<li>
+<U>	Mobile  নাম্বার দেওয়া: </U>  data type ঘরে text রেখে ডিজাইন ভিউতে গিয়ে নিদিষ্ট ফিল্ড সিলেক্ট করে নিচের থেকে General  সিলেক্ট Field size এর ঘরে প্রয়োজনীয় 11 লিখব। তখন 11  ঘরের বেশি লিখা যাবে না।
+অথবা, Field size এর ঘরে প্রয়োজনীয় 14 লিখব। Input Mask এর ঘরে 00000\ 00\ 00\ 00 এখানে, ১অক্ষর=\স্পেস</li>
+
+<br>
+
+<li>
+<U>	Table Hide/Freez করা: </U>Datasheet ভিউতে প্রয়োজনীয় কলাম সিলেক্ট ডান বাটনে ক্লিক Hide/Freeze Field   ক্লিক .</li>
+
+<br>
+
+<li>
+<U>	কুয়েরীতে 500 ,200 100 টাকার নোট কতটি/ DM GM GET কোন গ্রুপে কত জন/ কোন জেলাতে কত জন ঃ </U>Create- Query Design- টেবিল অথবা কুয়েরী সিলেক্ট করে Add- Close. এর  পর উপর থেকে টাকার ঘরটি  সিলেক্ট করে Field এর ঘরে নিয়ে ছাড়ব পর পর দুইবার  এবং Field এ কার্সর রেখে Design টুলসের Totals এ ক্লিক, দ্বিতীয় ঘরের  Group by এর ড্রপ ডাউনে ক্লিক Count করে দিব এবং Run করব।</li>
+
+<br>
+
+<li>
+<U>	মোট টাকার পরিমান জানা			ঃ </U>Create- Query Design- টেবিল অথবা কুয়েরী সিলেক্ট করে Add- Close. এর  পর উপর থেকে টাকার ঘরটি  সিলেক্ট করে Field এর ঘরে নিয়ে ছাড়ব পর পর দুইবার  এবং Field এ কার্সর রেখে Design টুলসের Totals এ ক্লিক, দ্বিতীয় ঘরের  Group by এর ড্রপ ডাউনে ক্লিক Sum করে দিব এবং Run করব।</li>
+
+
+<br>
+
+<li>
+<U>	কুয়েরীতে কোন শ্রেণিতে কত জন ছাত্র/ছাত্রী আছে জানা: </U>Create- Query Design- টেবিল অথবা কুয়েরী সিলেক্ট করে Add- Close. এর  পর উপর থেকে Class ঘরটি  সিলেক্ট করে Field এর ঘরে নিয়ে ছাড়ব, Gender ঘরটি  সিলেক্ট করে Field এর ঘরে নিয়ে ছাড়ব পর পর দুইবার  এবং Field এ কার্সর রেখে Design টুলসের Totals এ ক্লিক, দ্বিতীয় Gender ঘরের  Group by এর ড্রপ ডাউনে ক্লিক Count করে দিব এবং Run করব।</li>
+
+
+<br>
+
+<li>
+<U>	Officer কত জন আছে জানাঃ </U>Query Design-তে গিয়ে প্রোয়োজনীয় ঘরের Criteria তে  Officer লিখে রান  করব।</li>
+
+
+<br>
+
+<li>
+<U>	 কার কাছে কত বকেয়া আছে/মোট কত বকেয়াঃ</U> কুয়েরিতে Name এবংDue দুটি Feld নিয়ে উপরের Totals- নিচের Group By থেকে Sum / View তে গিয়ে উপরের Totals- নিচের ঘরে Sum</li>
+
+
+<br>
+
+<li>
+<U>	Admission Form (ছাত্র-ছাত্রীর ভতি জন্য)  :</U> Create - Form Wizard- Table/Query এর ড্রপ ডাউন থেকে প্রয়োজনীয় সিলেক্ট করে  	Available Field এর নিচ থেকে  প্রয়োজনীয় সিলেক্ট করে  Next - Columnar  - Next- Modify the Form's design -Finish.	</li>
+
+<br>
+
+
+<li>
+<U>	মার্ক Form (মার্ক এন্টির জন্য)  :</U>Create Form Wizard- Table/Query এর ড্রপ ডাউন থেকে প্রয়োজনীয় সিলেক্ট করে  	Available Field এর নিচ থেকে  প্রয়োজনীয় সিলেক্ট করে  Next - Datasheet  - Next- Modify the Form's design -Finish.</li>
+
+<br>
+
+
+<li>
+<U>	rank:</U> DCount("*","marksquary", "[total_marks]>" & [total_marks])+1<br>
+Or, Rank: DCount("*","sevenmark_total","[TotalPts]>=" & [TotalPts])
+
+</li>
+
+<br>
+
+
+<li>
+<U>	কোন কিছু না দেখাতে চাইলে:</U> প্রয়োজনীয় সিলেক্ট করে প্রপারটিজ –All- Visible-No<br></li>
+
+<br>
+
+<li>
+<U>	Notepad++ এ [ একটি সর্কয়ার ব্যাকেট দিলে যেন [] দুইটি সর্কয়ার ব্যাকেট হয় এটা করা: </U>টুল বার থেকে Settings-Preferences... - Auto-Completion - [] এর বামে বক্স এ ঠিক চিহৃ দিলে হবে।<br></li>
+
+<br>
+
+<li>
+<U>	Notepad++ এ পর্দার মধ্যে সকল লেখা আনা:</U> View- Word Wrap<br></li>
+
+<br>
+
+<li>
+<U>	File Backup রাখা: </U>File- Save & Publish- Save Databage As এর নিচ থেকে  Back Up Database -Save As- লোকেশান দেখিয়ে দিয়ে নাম দিয়ে সেভ করব।<br></li>
+
+
+<br>
+
+<li>
+<U>	৪র্থ বিষয়সহ কোন ছাত্র GPA 5 থেকে বেশি হলে তথন এই সুত্র ব্যবহার হবে।GPA:</U> IIf([GPA1]>5,5,[GPA1])<br></li>
+
+
+<br>
+
+<li>
+<U>	GPAPts:</U>iif(isnull([GPA]),0,[GPA]*1000)<br></li>
+
+<br>
+
+
+<li>
+<U>	Fail Count:</U> (IIf([bangla_GP]=0,1,0)+IIf([english_GP]=0,1,0))<br></li>
+
+
+<br>
+
+<li>
+<U>	Fail Count:</U> iif([Bangla_Grade]="F",1,0)+iif([English_Grade]="F",1,0)<br></li>
+
+<br>
+
+
+<li>
+<U>	agriculture 2 এর বেশি হলে অতিরিক্ত অংশটি যোগ হবে: </U>
+        GP_Abve_2: IIf([agriculture_GP]>2,[agriculture_GP]-2,0)<br></li>
+
+
+<br>
+
+<li>
+<U>	র‍্যাঙ্কঃ </U>=(DCOUNT("[TotalPts]","qEightResult","[TotalPts]>text and [TotalPts]>0"))+1<br></li>
+
+
+<br>
+
+<li>
+<U>	Form/Report এ এক ফিল্ডে তথ্য অন্য ফিল্ডে নেওয়ার জন্য:   </U>  একটি ফিল্ডের নাম SNameBangla	এটাকে অন্য ফিল্ডে নেওয়ার জন্য  টেক্স বক্স অংকন করে  =Nz([SNameBangla],"NA")     অথবা,=[SNameBangla]<br></li>
+
+
+<br>
+
+<li>
+<U>	Indexed/ডুপ্লিকেট না আসা : </U>টেবিলের ডিজাইন ভিউতে নির্দিস্ট ফিল্ডে কার্সর রেখে নেচের থেকে Indexed-Yes(No Duplicates<br></li>
+
+<br>
+
+<li>
+<U>	Required/এই ঘরটি ফাকা রাখা যাবে না: </U> টেবিলের ডিজাইন ভিউতে নির্দিস্ট ফিল্ডে কার্সর রেখে নেচের থেকে Required–Yes<br></li>
+
+
+<br>
+
+<li>
+<U>	Primary Key: </U> একটি টেবিলে একটির বেশি প্রাইমারি কী থাকতে পারবে না, ২। প্রাইমারি কী-তে একই value একাধিকবার এবং Null Value থাকতে পারে না ৩। একাদিক টেবিলের মধ্যে রিলেশন তৈরি করার পর টেবিলের প্রাইমারি কী পরিবর্তন করা যায় না।<br></li>
+
+
+<br>
+<li>
+<U>
+	একই টেবিলে দুইটি Primary Key সেট করাঃ </U>টেবিলের ডিজাইন ভিউতে নির্দিস্ট ফিল্ড সিলেক্ট করে কীবোর্ড থেকে Ctrl কী চেপে ধরে অন্য প্রয়োজনীয়<br> ফিল্ড সিলেক্ট করে (দুইটি এক সাথে) Disige - Primary Key.
+
+
+
+<li>
+<U>	Foreign Key:</U> একটি টেবিলেরForeign Key কে অবশ্যই Reference table প্রাইমারি কী  হতে হবে ২। ফরেন কী ফিল্ডের ভেল্যু অবশ্যই রেফারেন্স টেবিলের প্রাইমারি কী এর ভেল্যু হতে হবে। ৩। ডুপ্লিকেট অথবা নাল ভেল্যু ইনসার্ট (Insert) করা যাবে।<br></li>
+
+
+<br>
+
+<li>
+<U>	One to One রিলেশন  : </U>ডেটাবেজ একটি টেবিল একটি ফিল্ড অপর কোন টেবিল এর কেবলমাত্র একটি ফিল্ডের সাথে সম্পর্কযুক্ত থাকে, তখন তাকে One to One রিলেশন বলা হয়।<br></li>
+
+
+<br>
+<li>
+<U>	One to Many রিলেশন:</U> ডেটাবেজ একটি ফাইলের একটি রেকর্ড অপর কোন ফাইলের একাধিক রেকর্ডের সাথে সম্পর্কযুক্ত হয় তখন তাকে One to Many রিলেশন বলা হয়।<br></li>
+
+<br><li>
+<U>	Many to Many রিলেশন: </U>ডেটাবেজ একটি ফাইলের একাধিক রেকর্ড, অপর কোন ফাইলের একাধিক রেকর্ডের সাথে সম্পর্কিত হয় তখন তাকে Many to Many রিলেশন বলা হয়। Many to Many রিলেশনশীপ তৈরি করতে হলে তৃতীয় একটি টেবিল তৈরি করতে হয়।<br></li>
+
+</li>
+<br>
+<li>
+<U>DateForm-DateTo পর্যন্ত তথ্য খোজা: </U> একটি টেবিলে ডাটা থাকবে অন্য একটি টেবিল তৈরী করব (DateForm,DateTo) দুইট ফিল্ড নিয়ে <br>
+									উক্ত দুইট টেবিল নিয়ে একটি(xxxx) কুয়েরী করব। ১ম টেবিল  থেকে ডাটা ইনপুট করব কিন্তু ২য় টেবিল টি শুধু শো করব।<br>
+									১ম টেবিলের Date ফিল্ডের  Criteria ঘরে >=([DateForm]) And <=([DateTo])  লিখে  Sort<br> থেকে Ascending করব। এখন ফরমে নিয়ে প্রয়োজনীয় স্থানে টেবিল দেখিয়ে দিব।
+		
+		(xxxx)কুয়েরী থেকে রিপোট তৈরী করব।<br>
+		<br><br>
+	অথবা,	<br>
+		
+		
+		
+		একটি ফরমের(Form1) মধ্যে ২টি টেক্স বক্স নিয়ে ফরমেট দিব শট ডেট এবং নাম StartD এবং  EndD দিব।<br>
+		কম্বো বক্স   Combo2/বাটন কমান্ড এর মাধ্যমে আনার জন্য তৈরী করব।<br>
+		কুয়েরীতে তারিখ এর ঘর এর কাইটেরিয়াতে Between [Forms]![Form1]![StartD] And [Forms]![Form1]![EndD] দিব।<br>
+		রিপোটে তারিখ হতে এবং তারিখ পর্যন্ত দেখানো:<br>
+		রিপোটে মধ্যে ২টি টেক্স বক্স নিয়ে =[Forms]![Form1]![StartD] এবং  =[Forms]![Form1]![EndD]  দিব।<br>
+		
+		
+		
+		
+		
+		<br></li>
+<br>
+	<li>
+<U>Report এ ID Auto Serial করা :</U> রিপোটের ডিজাইন ভিউতে গিয়ে ID সিলেক্ট করে প্রপারটিজ  এর Data নিচ থেকে Control Sourch এর ঘরে =1 লিখব  এবং নিচ থেকে Running Sum থেকে Over Group লিখব  ।
+(টেবিলে অটো নাম্বর করা থাকতে হবে)<br>
+
+<br>
+
+
+
+<li>
+<U>	 রিপোর্টের বিভিন্ন অংশ : </U><br>
+Report Header	: হেডলাইন প্রদর্শিত হয় এই অংশের মাধ্যেমে। ................... ছাপানোর সময় টাইটেল প্রধম প্রৃষ্ঠার প্রথমে ছাপানো হয়।<br>
+Page Header		: প্রতি প্রষ্ঠার উপরে ডেটা হেডিং হিসাবে এখানে প্রদর্শিত হয়্ । .............. প্রতি পৃষ্ঠায় প্রথমে প্রদর্শিত হয়।<br>
+Detail			: রিপোর্টের ফলাফল বা ডেটাসমূহ এই অংশে প্রদর্শিত হয়।  .................মূল পষ্ঠায়  প্রদর্শিত হয়।<br>
+Page Footer		:  পৃষ্ঠা নং, বা কোন চিহ্ন (যেমন P.T.O) ইত্যাদি। । ....................... প্রতি পৃষ্ঠায় নিচের অংশে প্রদর্শিত হয়। - <br>
+Report Footer 	: সমগ্র রিপোর্টের সারমর্ম এই অংশে প্রদর্শিত হয়। .....যেমন- মোট যোগফল....... রিপোট এর সর্বশেষে প্রদর্শিত হয়<br></li>
+
+<br>
+<li>
+<U> Runing Sum Balance:</U> কুয়েরীর বিল্ট এর ঘরে সূত্রটি দিব <br>  Balance: (select Sum(takain-takaout) from tblAll AS Alias_Sample where Alias_Sample.ID<=tblAll.ID) <br>
+Or, Balance: (select Sum(DEBIT-CREDIT) from tblSample AS Alias_Sample where Alias_Sample.ID<=tblSample.ID) <br>
+	
+<br>
+	
+	<li>
+<U>
+
+	বাটনের সাথে Refresh সেট করা: </U>বাটন সিলেক্ট করে  প্রপারটিজ Event এর নিচ থেকে -On Click [Embedded Macro]এর ডানে *** (তিনটি ডট) কিক্ল-  নিচে লিখব Refresh ধরে সবার উপরে নিয়ে যাব এবং সেভ করব।</li>
+	
+<br>
+		  
+<li>
+<U>যোগফল</U>=Nz([admitionfee])+Nz([diaryfee])+Nz([jan])+Nz([feb])+Nz([mar])+Nz([apr])+Nz([may])+Nz([jun])<br>+Nz([juy])+Nz([agu])+Nz([sep])+Nz([Oct])+Nz([nov])+Nz([dec])+Nz([regfee2])+Nz([formfilup])+Nz([1st_exa])<br>+Nz([mid_exa])+Nz([anual_exa])+Nz([another])<br></li>
+
+<br>
+
+
+<li>
+<U>যোগফল</U>=Nz([sumofadmitionfee])+Nz([sumofdiaryfee])+Nz([sumofjan])+Nz([sumoffeb])+Nz([sumofmar])+Nz([sumofapr])<br>+Nz([sumofmay])+Nz([sumofjun])+Nz([sumofjuy])+Nz([sumofagu])+Nz([sumofsep])+Nz([sumofOct])+Nz([sumofnov])<br>+Nz([sumofdec])+Nz([sumofregfee2])+Nz([sumofformfilup])+Nz([sumof1st_exa])+Nz([sumofmid_exa])<br>+Nz([sumofanual_exa])+Nz([sumofanother])<br></li>
+
+<br>
+
+<li>
+<U> Rank: </U> <br>
+SELECT <br>
+[roll], <br>
+[sname], <br>
+[group], <br>
+[gpa], <br>
+[total_marks], <br>
+[TotalPts], <br>
+(SELECT COUNT(T1.TotalPts)<br>
+          FROM [Copy_Of_Result_GP_Query_rank] AS T1<br>
+          WHERE T1.TotalPts >= T2.TotalPts) AS Rank<br>
+FROM [Copy_Of_Result_GP_Query_rank] AS T2<br>
+ORDER BY TotalPts DESC;<br></li>
+
+<br>
+<li>
+<U> 
+মেধাস্থানঃ</U>
+=(DCOUNT("[TotalPts]","RankAuto","[TotalPts]>Text44 and [TotalPts]>0"))+1<br>
+
+<br>
+<li>
+<U> 
+Login FROMঃ</U>
+Dlookup("UserName","tbllogin","UserName=[txtUserName] and Password=[txtpassword]")<br>
+
+<br>
+<li>
+<U> ব্যাংক হিসাব:  </U>
+SELECT (SELECT TOP 1 Tr_amount FROM Trans AS Dup WHERE Dup.Trans_id <Trans.Trans_id ORDER BY Trans_date DESC) AS PrevAmt,(SELECT TOP 1 Trans_type FROM Trans AS Dup WHERE Dup.Trans_id<Trans.Trans_id ORDER BY Trans_date DESC) AS PrevType,*FROM Trans;  </li>
+
+oping Balance <br>
+=nz([PrevAmt],0)*IIF([PrevType]="Withdrawal",-1,1)<br>
+Closing balance<br>
+=[Tr_amount]*IIF([Trans_type]="Withdrawal",-1,1)<br></li>
+<br>
+<li>
+<U> CountFailSubject:</U> (IIf([bangla_GP]=0,1,0)+<br>
+IIf([english_GP]=0,1,0)+<br>
+IIf([math_GP]=0,1,0)+<br>
+IIf([ban_global_GP]=0,1,0)+<br>
+IIf([physics_GP]=0,1,0)+<br>
+IIf([chemistry_GP]=0,1,0)+<br>
+IIf([islam_GP]=0,1,0)+<br>
+IIf([drawing_GP]=0,1,0)+<br>
+IIf([trade-1_GP]=0,1,0)+<br>
+IIf([[trade-2_GP]=0,1,0))<br></li>
+
+or,<br>
+
+						CountFailSubject:<br>
+						iif([Bangla_Grade]="F",1,0)+<br>
+						iif([English_Grade]="F",1,0)+<br>
+						iif([Math_Grade]="F",1,0)+<br>
+						iif([Religion_Grade]="F",1,0)+<br>
+						iif([ICT_Grade]="F",1,0)+<br>
+						iif([Science_Grade]="F",1,0)+<br>
+						iif([BGS_Grade]="F",1,0)+<br>
+						iif([Agriculture_Grade]="F",1,0)<br>
+
+<br>
+Count_AB_Subject:<br>
+						iif([Bangla_Grade]="AB",1,0)+<br>
+						iif([English_Grade]="AB",1,0)+<br>
+						iif([Math_Grade]="AB",1,0)+<br>
+						iif([Religion_Grade]="AB",1,0)+<br>
+						iif([ICT_Grade]="AB",1,0)+<br>
+						iif([Science_Grade]="AB",1,0)+<br>
+						iif([BGS_Grade]="AB",1,0)+<br>
+						iif([Agriculture_Grade]="AB",1,0)<br><br>
+CountPassSubject:   8-[CountFailSubject]<br>
+<br>
+PassSubjectPts পাস বিষয়ের পয়েন্ট:    [CountPassSubject]*100000<br>
+<br>
+GPAPts জিপিএ পয়েন্ট:          iif(isnull([GPA]),0,[GPA]*1000)<br>
+<br>
+MinusPts রোল নং থেকে পয়েন্ট:      [Roll]*0.01  <br>
+<br>
+TotalPts:    [Total_Marks মোট মার্ক ]+[PassSubjectPts পাস বিষয়ের পয়েন্ট ]+[GPAPts জিপিএ পয়েন্ট]-[MinusPts রোল নং থেকে পয়েন্ট]<br>
+<br>
+
+<li>
+<U> 
+Shiftkey For Enabal</U><br>একটি বাটন নিয়ে বাটন সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On Click [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- নিচের কোডটি লিখব  এবং সেভ করব।
+
+<br>
+On Error GoTo err:<br>
+CurrentDb.Properties("allowbypasskey") = True<br>
+
+<br>
+
+Exit Sub<br>
+err:<br>
+CurrentDb.Properties.Append CurrentDb.CreateProperty("allowbypasskey", 1, True)<br>
+End Sub<br>
+
+<br>
+Private Sub Detail_Click()<br>
+DoCmd.Maximize<br>
+End Sub<br>
+
+<br>
+
+<li>
+<U> 
+Shiftkey For Disibale</U><br> একটি বাটন নিয়ে বাটন সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On Click [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- নিচের কোডটি লিখব  এবং সেভ করব।
+<br>
+On Error GoTo err:<br>
+CurrentDb.Properties("allowbypasskey") = False<br>
+Exit Sub<br>
+err:<br>
+CurrentDb.Properties.Append CurrentDb.CreateProperty("allowbypasskey", 1, False)<br>
+
+<br>
+<li>
+<U> 
+For Hide Ribonঃ</U> প্রথমে যে ফরমকে (ডিসপ্লে /লগিন) করাব ঐ ফরমের ডিজাইন ভিউতে গিয়ে ফরম সিলেক্ট করে<br> Properties- Event- On Load-[Event Procedure] এর ডানে *** (তিনটি ডট) কিক্ল- এবং DoCmd.ShowToolbar "Ribbon", acToolbarNo লিখে       সেভ করব।
+
+
+<br>
+
+
+<br> যেমন<br>
+Private Sub Form_Load()<br>
+DoCmd.ShowToolbar "Ribbon", acToolbarNo<br>
+End Sub<br>
+
+<br>
+
+<li>
+<U> 
+Form Tab Order/Tab-Key সেট করা/এলোমেলো আসলে:</U><br>
+
+Form এর  ডিজাইন ভিউতে গিয়ে সম্পূর্ণ ফরম সিলেক্ট করে Design- থেকে Tab Order – Selection থেকে  -Detail -Custom Order থেকে প্রয়োজনীয় সিলেক্ট করে ধরে ড্রাগ করে উপরে নিচে নিলে হবে।<br>
+সিলেক্ট করার নিয়ম ঃ ফিল্ড এর  বামে কাসর্র নিলে মাউস ডানের তির চিহৃ হবে তখন সিলেক্ট হবে।
+
+<br>
+
+<li>
+<U> 
+	Datasheet Form Color করাঃ   :</U>
+	প্রথমে ফরমকে Datasheet ভিউতে নিতে হবে, তারপর Home- Text Formatting এর Datasheet  Formatting-<br>
+	Cell Effect থেকে Raised, এবং Background Color   থেকে সাদা,  Alternative Color থেকে হলুদ,  Gridline Color থেকে লাল,  Ok,
+
+<br>
+<br>
+
+<li>
+<U> 
+	No Of No/সংখ্যা জানা   :</U>
+
+=IIf([NewRecord],"New Record"," student " & [CurrentRecord] & " of " & Count(*))
+
+<br>
+<br>
+<li>
+<U> 
+	Text/লেখা দুই লাইনে আনা   :</U> Form এর  ডিজাইন ভিউতে গিয়ে Text সিলেক্ট করে Design- থেকে  Properties- – Other থেকে  -Enter Key Behavior- New line in field 
+<br>
+<br>
+<li>
+<U> 
+	রিপোটকে বড় করে দেখানো জন্য   :</U> প্রিন্ট প্রিভিউ বাটন সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On Click [Embedded Macro]এর ডানে *** (তিনটি ডট) কিক্ল- Window Mode কে Icon দিয়ে সেভ করব।
+<br>
+<li>
+<U>Form কে Password/পাসওয়াড দেওয়ার কোড </U><br> text box সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -After Update [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- নিচের কোডটি দিয়ে সেভ করব।<br>
+
+
+If Text2 = "123" Then<br>
+DoCmd.OpenForm "Form1", acNormal<br>
+Else: MsgBox "You have Provided Wrong Password- Retry Your Password", vbOKCancel + vbCritical, "Caution!!"<br>
+End If<br>
+
+<br>
+<li>
+<U>অথবা,</U><br>
+ <U>Form কে Password/পাসওয়াড দেওয়ার কোড </U><br> text box এর নিচে একটি Ok বাটন নিয়ে তা সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On Click [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- নিচের কোডটি দিয়ে সেভ করব।<br>
+
+
+If Text2 = "123" Then<br>
+DoCmd.Close<br>
+DoCmd.OpenForm "frm_web", acNormal<br>
+Else: MsgBox "You have Provided Wrong Password- Retry Your Password", vbOKCancel + vbCritical, "Caution!!"<br>
+End If<br>
+
+<br>
+<li>
+
+ <U>Form এ  label Moving করা </U><br>
+ 
+ ওয়াড থেকে একটি সিম্বল কপি করে Access FROM লেবেলে এ পেস্ট করব। Label1, Label2,Label3,Label4,Label5 নামে।
+FROM সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On load-[Event Procedure]- এর ডানে *** (তিনটি ডট) কিক্ল- করে Private Sub Form_Load() এর পরে  নিচের কোডটি লিখে সেভ করব।<br>
+Private Sub Form_Load()<br>
+Me.Label1.Visible = True<br>
+End Sub<br>
+
+আবার FROM সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -Timer Interval-200 লিখে  On Timer-[Event Procedure]- এর ডানে *** (তিনটি ডট) কিক্ল- করে Private Sub Form_Timer() এর পরে  নিচের কোডটি লিখে সেভ করব।
+<br>
+<br>
+Private Sub Form_Timer()<br><br>
+If Me.Label1.Visible = True Then<br>
+    Me.Label2.Visible = True<br>
+    Me.Label1.Visible = False<br>
+    <br><br>
+ElseIf Me.Label2.Visible = True Then<br>
+    Me.Label3.Visible = True<br>
+    Me.Label2.Visible = False<br>
+<br><br>
+ElseIf Me.Label3.Visible = True Then<br>
+    Me.Label4.Visible = True<br>
+    Me.Label3.Visible = False<br><br>
+    
+ElseIf Me.Label4.Visible = True Then<br>
+    Me.Label5.Visible = True<br>
+    Me.Label4.Visible = False<br><br>
+
+Else<br>
+    Me.Label1.Visible = True<br>
+    Me.Label5.Visible = False<br>
+<br><br>
+End If<br>
+
+
+<li>
+<U> ফরমে ডাটা save না করতে চাইলে </U><br>
+Form এর  ডিজাইন ভিউতে গিয়ে সম্পূর্ণ ফরম সিলেক্ট করে Design- থেকে Event এর নিচ থেকে -Before Update [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- Me.Undo কোডটি দিয়ে সেভ করব।<br>
+<br>
+
+<li>
+<U> ফরমে  save বাটন  না কিক্ল করা পর্যন্ত  Data Save হবে না </U><br>
+Form এর  ডিজাইন ভিউতে গিয়ে সম্পূর্ণ ফরম সিলেক্ট করে Design- থেকে Event এর নিচ থেকে -On Current -[Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল <br> Option Compare Database এর নিচের লাইনে <br>
+Dim dsave As Boolean<br>
+তার পর <br>
+Private Sub Form_Current()এর নিচের লাইনে <br>
+ 
+dsave = False <br>
+
+
+End Sub<br>
+<br><br>
+তার পর <br>
+
+Form এর  ডিজাইন ভিউতে গিয়ে সম্পূর্ণ ফরম সিলেক্ট করে Design- থেকে Event এর নিচ থেকে -Before Update [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- <br>
+Private Sub Form_BeforeUpdate(Cancel As Integer)এর নিচের লাইনে <br>
+If dsave = False Then<br>
+Cancel = True<br>
+Me.Undo<br>
+Cancel = False<br>
+End If<br>
+
+কোডটি দিয়ে সেভ করব।<br><br><br>
+তারপর<br>
+Form এর  ডিজাইন ভিউতে গিয়ে কমান্ড না দিয়ে একটি সেভ নামে বাটন তৈরি করব, বাটনটি  সিলেক্ট করে Design- থেকে Event এর নিচ থেকে -On Click -[Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল <br> 
+Private Sub Command17_Click() এর নিচের লাইনে <br>
+dsave = True<br>
+MsgBox "save Changed"<br>
+
+<br>
+
+<li>
+<U> VBR Code বাদ দেওয়ার জন্য </U><br>
+কোড এর শুরুতে ‘ চিহ্ন  যেমন    'DoCmd.OpenForm "Form1", acNormal<br>
+
+<br>
+<li>
+<U> ফরমে ডাটা Edit করতে না দিতে চাইলে </U><br>
+
+Form এর  ডিজাইন ভিউতে গিয়ে সম্পূর্ণ ফরম সিলেক্ট করে Design- থেকে Data এর নিচ থেকে -<br>
+Allow Edits- NO <br>
+Allow Deletions -NO <br>
+
+
+<br>
+<li>
+<U> ফরমের সাব ফরম থেকে যোগফল ফরমে আনার জন্য  । Expression Builder এর মধ্যে যোগ-বিয়োগ করা</U><br>
+
+ সাব ফমের ভিতরে text box  এর মধ্যে  =sum(reg) (যোগফল ) করে তা হাইড করে <br>
+ ফরেম আরেকটি text box  এর মধ্যে কার্সর রেখে Data  এর Control Source   এর ডানে *** (তিনটি ডট) কিক্ল <br>
+ Expression Builder  এর ঘরে কার্সর রেখে<br>
+ Expression Elements থেকে যে ফরম থেকে ডাটা আনতে চাই তা সিলেক্ট  <br>
+ Expression Catagory থেকে Field list <br>
+ Expression  Value থেকে প্রয়োজনীয় <br>
+
+
+<br>
+<br>
+অথবা,<br>
+<U>Total নামের টেবিলের ফিল্ডে  মোট আনা, ডাটাশীট সাব ফরম থেকে : </U><br>
+ ডাটাশীট ভিউ এর (নাম InvoiceDetails_subform) সাব ফমের ভিতরে Form Footer এর মধ্যে [বা সাব ফরমের ভিতরে] text box অংকন করে (নাম দিব totalsum) এর মধ্যে  <br>   =Sum([qty]*[salesrate]-[discount]) (যোগফল ) করে তা হাইড করে[দেখা যাওয়ার দরকার নাই] <br>
+ 
+ মেইন ফরমের  ভিতরে একটি text box অংকন করে (নাম দিব Text19) এবং তা হাইড করব।<br>
+ Text19 সিলেক্ট করে  Data - Control source এর ডানে *** (তিনটি ডট) কিক্ল <br> 
+Expression Builder  এর ঘরে কার্সর রেখে = দিয়ে <br>
+Expression Catagory থেকে InvoiceDetails_subform<br>
+=[InvoiceDetails_subform].[Form]![totalsum]<br>
+ একটি বাটন তেরী করে নাম দিব Calculat উক্ত Calculat বাটনটি সিলেক্ট করে  প্রপারটিজ Event এর নিচ থেকে -On Click [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- <br>নিচের কোডটি লিখব এবং সেভ করব। <br>
+ Me.Refresh<br>
+Me![Total] = Nz(Me![Text19])<br>
+
+এখন থেকে Calculat কিক্ল করলে Totalএর ঘরে মোট আসবে।<br>
+<br>
+<br>
+<li>
+<U> Dropdown Combobox তৈরি:</U><br>
+1। প্রথমে টেবিল প্রয়োজনীয় ফিল্ড নিয়ে থেকে একটি কুয়েরী করব   (নাম xxxx)।<br>
+2। তার পর একটি ফরম তৈরি করব (নাম All_Student)।  ফরমে প্রয়োজনীয় সংখ্যাক Combobox তৈরি করব। ( I will Type  in the...... টেবিলে যে মন  আছে তেমন Class - নবম, দশম) Combobox এর একটি  নাম দিব TxtCombo<br>
+3। Report/ Form তৈরি করব কুয়েরী দেখিয়ে (নাম xxxx)কে দিখেয়ে<br>
+4। আবার কুয়েতিতে গিয়ে Class এর ঘরে কাইটেরিয়াতে [Forms]![All_Student]![TxtCombo]<br>
+5। All_Student ফরমে ,বাটনের মাধ্যমে Report/ Form দেখিয়ে একট বাটন তৈরী করি।<br>
+
+<br>
+<li>
+<U> Save & New বাটন তৈরী:</U><br> 
+Form এর  ডিজাইন ভিউতে গিয়ে কমান্ড না দিয়ে একটি Save & New নামে বাটন তৈরি করব, বাটনটি  সিলেক্ট করে Design- থেকে Event এর নিচ থেকে -On Click -[Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল <br> 
+Private Sub Command17_Click() এর নিচের লাইনে <br>
+
+ASave=True<br>
+DoCmd.RunCommand (acCmdRecordsGoToNew)<br>
+
+<br>
+<li>
+<U> Table Field Hyperlink করা:</U><br> 
+টেবিলে ডাটা ফিল্ডকে Hyperlink দেখালে সরাসরি ওয়েব সাইটে চলে যাবে।
+<br>
+<br>
+<li>
+<U> কুয়েরিতে 0 থেকে বেশি সংখ্যা রাখার জন্য:</U><br>
+কাইটেরিয়াতে >0 লিখব
+<br>
+<br>
+<li>
+<U> এক ফাইল থেকে অন্য ফাইলে  Data Inport এর জন্য:</U><br>
+External Data- New Data Source- Form Database Access- Brows- Any File -Open. <br>
+Inport Table.. Query, FROM.....Ok- 
+Tables থেকে প্রয়োজনীয় টেবিলের নাম মাউস দিয়ে সিলেক্ট করে /SELECT All
+Query, FROM, Report থেকে প্রয়োজনীয়  নাম মাউস দিয়ে সিলেক্ট করে /SELECT All
+প্র্রয়োজনীয় সিলেক্ট করার পর শেষে Ok.
+<br>
+<br>
+<li>
+<U> এক ফাইল থেকে অন্য ফাইলে   Data Export এর জন্য:</U><br>
+Access ফাইলে প্রবেশ করে টেবিল বা কুয়েরী বা ফরম সিলেক্ট করে 
+External Data- ডান পাশ থেকে - Excel, word, PDF, Access ,পূবের মত।
+<br>
+
+<br>
+<li>
+<U> facebook লিং দেওয়া নিয়ম:</U><br>
+ফরমের ডিজাইন ভিউতে facebook এর ছবি এনে সিলেক্ট করে   Design- থেকে Event এর নিচ থেকে -On Click -[Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল <br> 
+Private Sub imgfacebook_Click() এর নিচের লাইনে <br>
+
+
+Application.FollowHyperlink ("https://web.facebook.com/wohabs/")<br>
+
+
+
+<br>
+<li>
+<U>Table/Query এর (ফিল্ড নেম সাইজ) ডাটা অটো পরিমান মত বসানো:</U><br>
+Table/Query এর ডাটাশীট ভিউতে গিয়ে উপরের -বামের ঘর কিক্ল (সম্পূর্ণ Table/Query)সিলেক্ট করে উপরের ফিল্ড নেম এর ঘরে কার্সর নিলে পাস এর মত হবে যে কোন একটির উপরের উক্ত পাস কার্সর এর উপর মাউস ডাবল কিক্ল করলে সাথে সাথে সকল ফিল্ড নেম সাইজ সমান হয়ে যাবে ।
+<br>
+<br>
+<li>
+<U>ApplyFilter /Group/SearchByClass  করা:</U><br>
+Continuous ফরমের ডিজাইন ভিউতে Form_Headerএ  Combobox এ I will type..Next-- Store that valu তে  Class- দেখিয়ে(নবম/দশম, নাম TxtClassSearch একটি Combobox তৈরি করি।    একটি বাটন তৈরী করব <br>
+এবং বাটন সিলেক্ট করে   Properties- থেকে Event এর নিচ থেকে -On Click -এর ডানে *** (তিনটি ডট) কিক্ল<br>
+   Macro Builder- Ok  - +এর ঘরে  ApplyFilter-ApplyFilter এর- Where Condition এর ঘরে ="Class='" & [Forms]![Searchform ফরমের নাম]![TxtClassSearch] & "'"                   <br> 
+<br>
+
+Or, Continuous ফরমের ডিজাইন ভিউতে Form_Header এ  Unboundbox নিয়ে TxtSearch নামে সেভ করব।  <br>
+ একটি বাটন তৈরী করব এবং বাটন সিলেক্ট করে   Properties- থেকে Event এর নিচ থেকে -On Click -এর ডানে *** (তিনটি ডট) কিক্ল<br>
+   Macro Builder- Ok  - +এর ঘরে  ApplyFilter-ApplyFilter এর- Where Condition এর ঘরে  একটি, দুইটি বা তিনটি সার্চ তৈরি করব <br>
+[sname] Like "*" & [Forms]![Vocational_student_IX]![TxtSearch] & "*" Or [roll] Like "*" & [Forms]![Vocational_student_IX]![TxtSearch] & "*" <br>
+
+
+
+
+
+
+<br>
+
+<li>
+<U> Sub_Form থেকে  Main Form এ ‍Search বাটনের মাধ্যমে তথ্য আনা   :</U><br>
+ <br>
+Sub_Form এর  যে তথ্য  Main Form এ ‍Search বাটনের আনতে চাই  তা কুয়েরীতে ঐ ঘরের কাইটেরিয়াতে <br>
+(Like "*" & [txtsearch ফরমের আনবাউন্ড বক্সের নাম] & "*")  এবং <br>
+অর (Like "*" & [txtsearch] & "*")  এর ঘরে  <br>
+<br>
+তারপর ঐ কুয়েরী কে দেখিয়ে একটি Sub_Form (Q_search_subform) তৈরি করে করি।<br>
+<br>
+Main Form এ Sub_Form  নিয়ে আসব। <br>
+Main Form এ ডিটেইসে আনবাউন্ড বক্সের নাম (txtsearch)তৈরি করি।<br>
+বাটন তৈরি করি (Search  এবং showAll নামে )। Search বাটন সিলেক্ট করে Design- থেকে Event এর নিচ থেকে -On Click -[Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল<br>
+<br>
+Private Sub search_Click()<br>
+Me.Q_search_subform.Form.Requery  (এখানে Q_search_subform হলো সাব ফরমের নাম)<br>
+End Sub<br>
+<br>
+showAll বাটন সিলেক্ট করে Design- থেকে Event এর নিচ থেকে -On Click -[Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল<br>
+<br>
+
+Private Sub showAll_Click() <br>
+Me.txtsearch.Value = ""   (এখানে txtsearch হলো  আনবাউন্ড বক্সের নাম)<br>
+Me.Q_search_subform.Form.Requery<br>
+End Sub<br>
+
+ 
+
+ 
+
+<br>
+<li>
+<U> MainForm size:</U><br>
+7"(17.5 cm)* 13" (33cm)
+					
+
+<br>
+
+
+
+
+<br>
+<li>
+<U> Birth Date 01/01/2021 হতে  01/01/2022 পর্যন্ত বের করা :</U><br>
+কুয়েরীর ডিজাইন এ গিয়ে কাইটেরিয়াতে Between [Start Date] And [End Date]<br>
+run করব এবং টাক্সবারে দেখব আমার তারিখ যেভাবে সো করে এ ভাবে পেরামিটারে লিখব।
+
+<br>
+<br>
+<li>
+<U> Upload_Picture বাটন তেরী করা :</U><br>
+<br>  প্রথমে  Tabel এর ডাটা টাইপ Attenment করব, (নাম দিব photo )<br>
+ফরমে গিয়ে photo এর নিচে একটি বাটন তৈরি করে  Upload_Picture নামে সেভ করব, বাটন  সিলেক্ট করে<br>
+প্রপারটিজ Event এর নিচ থেকে -On click-এর ডানে *** (তিনটি ডট) কিক্ল-<br>
+Macro Builder- Ok<br>
+GoToControl  লিখে এন্টার দিব <br>
+ তার পর Control Name  এর ঘরে photo দিব।<br>
+  RunMenuCommand লিখে এন্টার দিব<br>
+ Command এর ঘরে ManageAttachments<br>
+
+
+<br>
+
+<br>
+
+
+
+
+<li>
+<U> Add Exiting থেকে Control source দেখানো :</U><br>
+text-box অংকন করে আনবাউন্ড টেক্স এর নাম দিব  xxx এবং xxx সিলেক্ট করে   Data থেকে  Control Source এর ঘরে ড্রপডাউন করে  প্রয়োজনীয় ঘর  দেখাব
+
+<br>
+<br>
+
+
+
+
+<li>
+<U> পাশা পাশি Yes/No কতটি আছে জানার জন্য  :</U><br>
+
+ফিল্ড নেম গুলো যোগ করে -1 দ্বারা গুন করবঃ([1]+[2]+[3]+[4]+[5]+[6])*-1 <br>
+
+
+<br>
+
+<li>
+<U> নিচে নিচে  Yes/No কতটি আছে জানার জন্য  (একই ফিল্ডে ঠিক চিহৃ) :</U><br>
+
+কুয়েরীতে নামের  একটি ফিল্ড নিয়ে Totals এ কিক্ল Field এর ঘরে ডান বাটনে এ কিক্ল  Bulid..... এ কিক্ল  Counatt:Count(IIf([Month টেবিলের নাম]![Yes_No ফিল্ড নেম]=Yes,1,Null))<br>
+Group By এর ঘর থেকে Expression সিলেক্ট করতে হবে।<br>
+কতটিতে ঠিক চিহৃ নাইঃ CounMiss: Count(IIf([Month]![Yes_No]=No,1,Null))<br>
+
+<br>
+<li>
+<U> Yes/No Filter করা  (ঠিক চিহ্ন দেওয়া গুলো আলাদা করে অন্য রিপোটে/ফরমে দেখানো জন্য):</U><br>
+টেবিল থেকে কুয়েরী এবং কুয়েরী দেখিয়ে Form/Report Wizard- তৈরি করে  ডিজাইন ভিউতে Form/Report সিলেক্ট করে 
+ প্রপারটিজ Event এর নিচ থেকে -On load-[Event Procedure]-এর ডানে *** (তিনটি ডট) কিক্ল- <br>
+ Private Sub Form_Load() এর পরে নিচের কোডটি লিখব <br>
+ Me.Filter = "[Active ফিল্ড নেম ]=YES"<br>
+Me.FilterOn = True<br>
+
+
+<br>
+<br>
+<li>
+
+<U> ঠিক চিহৃ থাকলে যোগ হবে    </U><br>
+প্রথমে LonaCustomer টেবিলের LoanCustomerID ফিল্ড এর সাথে LonaPayment টেবিলের LoanCustomerID ফিল্ড এর মধ্যে রিলেশান করতে হবে।<br>
+LonaPayment টেবিলকে দিয়ে কুয়েরি করি। (payment)<br>
+loanPayment.* ফিল্ড নিয়ে আরো একটি কুয়েরি বিল্ড করব।<br>
+   AmountPaid: IIf([IsPaid],[PaymentAmount],0)<br>
+   IsPaid=loanPayment টেবিলের ফিল্ড <br>
+   PaymentAmount=loanPaymentটেবিলের ফিল্ড <br>
+ payment কুয়েরি দিয়ে PaymentDate, PaymentAmount, IsPaid ফিল্ড নিয়ে কনটিনিউয়াস ফরম তেরী করি।(payment)<br>
+ ফরম ফুটারে Total=Sum([PaymentAmount])<br>
+ Paid=Sum([AmountPaid])<br>
+ Due=Sum([PaymentAmount])-Sum([AmountPaid])<br>
+ LonaCustomer কে সোস দেখিয়ে একটি ফরম তৈরী করি। এবং (payment) কনটিনিউয়াস ফরম কে সাব ফরম হিসাবে সেট করি।<br>
+ 
+ 
+   
+
+<br><br>
+
+
+<li>
+<U> ControlTip Text/বাটনের উপর মাউস নিলে লেখা সো করা  :</U><br>
+
+ডিজাইন ভিউতে গিয়ে বাটন সিলেক্ট করে প্রোপারট্রিজ এর All- এর সর্বনিচে  ControlTip Text এর ঘরে প্রয়োজনীয় লিখলে তা সো করবে <br>
+<br>
+
+<li>
+<U> Report বা Form এ Total/নিচে নিচে মোট কতজন তা জানা :</U><br>
+  Report বা Form  এর ঘরে ডান বাটনে কিক্ল ReportHeader/Footer- এখানে Report Footer- এর মধ্যে Unbound box এর মাধ্যমে =Count("[board_roll]") <br>
+  এখন Report Footer- এর মধ্যে নিচে নিচে মোট কতজন তা দেখা যাবে।
+<br>
+<br>
+<li>
+<U> MS Excel সেল লক করা :</U><br>
+=B2*H2 এখানে H2 সেলকে লক করার জন্য =B2*$H$2 <br>
+H2 কে সিলেক্ট করে কী বোর্ড থেকে F4/FN_key+F4 চাপলে হয়ে যাবে।<br>
+<br>
+<br>
+<li>
+<U> MS Excel এক সেলের তথ্য অন্য জায়গায় নেওয়া :</U><br>
+যে সেলে তথ্য নেওয়া প্রয়োজন ঐ সেলে কার্সর রেখে =চিহ্ন দিয়ে তারপর ' চিহ্ন দিয়ে তারপর শিপটের নাম (Data Entry-1) দিয়ে তারপর ' দিয়ে তারপর ! দিয়ে তারপর সে সেল থেকে তথ্য আসবে ঐ সেলের নাম <br>
+যেমন ='Data Entry-1'!F6<br>
+
+
+<br>
+<br>
+<li>
+<U> MS Excel, Roll NO অনুযায়ী ১নং শীট থেকে ২নং শীটে ছাত্র/ছাত্রীর নাম আনা  :</U><br>
+
+
+
+
+২নং শীটের যে স্থানে নাম আনার দরকার ঐ স্থানে কার্সর রেখে ফরমুলাবারে নিচের সূত্রটি ব্যবহার করব।<br>
+=VLOOKUP(I12,Sheet1!A15:AE234,2,0)<br>
+<br>
+I12=২নং শীটের আইডি নং এর সেল এর নাম<br>
+Sheet1!A15:AE234=১ নং শীটে গিয়ে   পুরোটা ডাটা সিলেক্ট করতে হবে<br>
+2= ১ নং শীটের ২নং কলাম যেখানে নাম আছে তা<br>
+Or,<br>
+=IFERROR(VLOOKUP(I12,Sheet1!A15:AF234,2,0),"")<br>
+
+
+
+<br>
+
+
+<br>
+<br>
+<li>
+<U> MS Excel ১নং শীট থেকে ২নং শীটে ছাত্র/ছাত্রীর Roll NO আনা  :</U><br>
+
+২নং শীটের যে স্থানে Roll NO আনার দরকার ঐ স্থানে কার্সর রেখে ফরমুলাবারে নিচের সূত্রটি ব্যবহার করব।<br>
+
+Data-Data Validation- Allow -List-source<br>
+ এর ঘরে কিক্ল করে ১ নং শীটে গিয়ে  Roll NO এর ঘর যে সমস্ত সেলে আছে তার পুরোটা  সিলেক্ট করতে হবে- ok<br>
+<br>
+<br>
+<li>
+<U> কুয়েরিতে নিচে নিচে কাইটেরিয়াতে একের অধিক কাইটেরিয়া যোগ করা :</U><br>
+কাইটেরিয়া ঘরে একটি লিখে অর এর ঘরে আরো একটি লিখে নিচে নিচে প্রয়োজনীয়  লিখলে চলবে।<br>
+Or, কাইটেরিয়া ঘরে একটি লিখে Or দিয়ে লিখলেও হবে।<br>
+যেমন "DM" Or "GM" Or "GET"<br>
+
+
+<br>
+<li>
+<U> MS Excel কোন cell ERROR আসলে তা দুর করার নিয়ম
+  :</U><br>
+
+=IFERROR(,"")
+
+<br>
+যেমন বিয়োগ করার সময় যদি  ERROR আসে তাহলে = I5-J5 এই সুত্রের পরে হবে<br>
+=IFERROR(I5-J5,"")
+
+<br>
+<br>
+<br>
+<li>
+<br>
+<br>
+<U> MS Excel কোন সেলে অটোমেটিক তখ্ আনার জন্য :</U><br>
+=IFERROR(VLOOKUP(C2,তালিকা!$A$2:$D$7,2,FALSE),"")<br>
+এখান<br>
+C2 হলো সে সেলে কিক্ল করলে পরের সেল অটেোমেটিক আসবে ঐ সেলের নাম<br>
+তালিকা!$A$2:$D$7 হলো অন্য একটি শীটের  লক করা রেঞ্জ (A2:D7)<br>
+2 হলো সে সেলের তথ্য অটেোমেটিক আসবে   ঐ সেলের কলাম নং<br>
+
+<br>
+<li>
+<U> BVA/Code দিয়ে কোন ফরম বন্ধ ও চালূ করা :</U><br>
+Search By বাটন তৈরী করে সিলেক্ট করে   Design- থেকে Event এর নিচ থেকে -On Click -[Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল <br> 
+Private Sub Search By_Click() এর নিচের লাইনে <br>
+DoCmd.Close  <br>
+    DoCmd.OpenForm "SearchStudent"  <br>
+
+<br>
+<li>
+<U>Report কোন শ্রেণিতে কত জন ছা ত্র  আছে জানার জন্য  </U><br>
+Design-Short & Group- <br>
+নিচ থেকে Add a Group ,এখান থেকে Class সিলেক্ট করলে উপরে Class header তৈরী হবে  <br>
+ডানের More Option  কিক্ল With a Footer section চালু হবে। <br><br>
+Class header এ আন বাউন্ড বক্স  এর মধ্যে <br>
+শ্রেণি=[Class] শ্রেণির নাম আসবে<br>
+<br>
+Class Footer এ আন বাউন্ড বক্স  এর মধ্যে <br>
+=Count([Class]) শ্রেণিতে মোট ছাত্র ছাত্রী সংখ্যা আসবে।<br>
+<br>
+
+রিপোট পুটারে এ আন বাউন্ড বক্স  এর মধ্যে <br>
+=DCount("[Roll]","Student_Information") প্রতিষ্ঠানের মোট ছাত্র জন্য।<br>
+
+
+
+<br>
+<li>
+<U> 
+Report Print বাটন সেট করা  </U><br>
+Report এর Page header এ একটি বাটন তৈরী করে সিলেক্ট করে Design- থেকে Event এর নিচ থেকে -On Click -[Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল<br>
+Private Sub Print_Click() এর নিচের লাইনে <br>
+DoCmd.PrintOut <br>
+  <br>
+
+
+<li>
+<U> রিপোটে সকল রং একই রকম করা :</U><br>
+রিপোটের ডিজাইন ভিউতে   Detail এর সাদা স্থানে কার্সর রেখে  All  তারপর Anternate Back Color - No Color <br>
+
+<br>
+
+
+<li>
+<U> ফরম এ PDF /Excel এ র Export বাটন সেট করা  :</U><br>
+
+
+একটি বাটন নিয়ে কেটে দিয়ে সিলেক্ট করে Design- থেকে Event এর নিচ থেকে -On Click - এর ডানে *** (তিনটি ডট) কিক্ল<br>
+Macro Builder -Ok- Exportwithformating-তার পর  Object type এর ঘরে টেবিল, কুয়েরি,ফরম রিপোট যা Export করতে চাই তা সিলেক্ট <br>
+Object Name এর ঘরে  টেবিল, কুয়েরি,ফরম রিপোটের  যে নাম আছে  তা সিলেক্ট এবং OutPut Formate সিলেক্ট যেমন  Excel Workbook/PDF Format -Output Quality -Print-Save- Close<br>
+
+<br>
+
+
+<li>
+<U> ফরম এ Input বাটন সেট করা :</U><br>
+
+
+একটি বাটন নিয়ে কেটে দিয়ে সিলেক্ট করে Design- থেকে Event এর নিচ থেকে -On Click - এর ডানে *** (তিনটি ডট) কিক্ল<br>
+Macro Builder -Ok- AddContactFromOutlook<br>
+-তার পর  Command এর ঘরে ImportAttachExcel-- Save- Close<br> Input বাটন Click  যা Input করতে চাই তা সিলেক্ট <br>
+
+
+
+<br>
+
+
+<li>
+<U> Welcome Form সেট করা :</U><br>
+একটি ফরম তৈরি করে (Welcome) -সিলেক্ট করে  Design -All - Timer Interval-1000 
+On Timer -[Event Procedure] এর ডানে *** (তিনটি ডট) কিক্ল<br> 
+Private Sub Form_Timer()এর নিচে  <br>
+DoCmd.Close acForm, "Welcome যে ফরম ওয়েলকাম ফরম হিসেবে দেখতে চাই" <br>
+DoCmd.OpenForm "frmLogin যে ফরম লগিন ফরম হিসেবে দেখতে চাই" "<br>
+End Sub<br>
+
+
+
+
+ 
+ 
+
+
+
+<br>
+
+<li>
+<U> যদি শ্রেণি ৬ষ্ঠ হয় তাহলে বৃক্ষরোপন হবে, অন্যথায় স্বাস্থ্যবিধি হওয়া :</U><br>
+ =IIf([Class]="৬ষ্ঠ","বৃক্ষরোপন","স্বাস্থ্যবিধি")
+ 
+ <br>
+ 
+ 
+ 
+
+
+
+<br>
+
+<li>
+<U> ৬ষ্ঠ শ্রেণির চারটি কাইটেরিয়া নিয়ে যোগ (যে কোন একেটিতে মার্ক থাকলেই যোগ করবে অন্যথায় খালি দেখাবে) BanglaTotal:</U><br>
+ 
+  <br>
+IIf(IsNull([BanglaMCQ]) And IsNull([BanglaCQ]) And IsNull([BAssignment]) And IsNull([BPlantation_Cleanliness]),Null,<br> IIf(IsNull([BanglaMCQ]),0,[BanglaMCQ])+<br>
+IIf(IsNull([BanglaCQ]),0,[BanglaCQ])+<br>
+IIf(IsNull([BAssignment]),0,[BAssignment])+<br>
+IIf(IsNull([BPlantation_Cleanliness]),0,[BPlantation_Cleanliness]))<br>
+ <br><br>
+ 
+ <li>
+<U> ৬ষ্ঠ শ্রেণির BanglaGrade:</U><br>
+ 
+  <br>
+  
+IIf([BanglaTotal]>=80,"A+",<br>
+IIf([BanglaTotal]>=70,"A",<br>
+IIf([BanglaTotal]>=60,"A-",<br>
+IIf([BanglaTotal]>=50,"B",<br>
+IIf([BanglaTotal]>=40,"C",<br>
+IIf([BanglaTotal]>=33,"D",<br>
+IIf([BanglaTotal]>=0,"F","AB")))))))<br>
+<br><br>
+<li>
+<U> ৬ষ্ঠ শ্রেণির  BanglaGradePoint:</U><br>
+ 
+  <br>
+ 
+IIf([BanglaTotal]>=80,5,<br>
+IIf([BanglaTotal]>=70,4,<br>
+IIf([BanglaTotal]>=60,3.5,<br>
+IIf([BanglaTotal]>=50,3,<br>
+IIf([BanglaTotal]>=40,2,<br>
+IIf([BanglaTotal]>=33,1,Null))))))
+
+
+<br>
+<br>
+<li>
+<U> Result/ ৬ষ্ঠ শ্রেণির ফলাফল তৈরী করা ধাপ :</U><br> 
+1. ৬ষ্ঠ শ্রেণির তিনটি কাইটেরিয়া নিয়ে যোগ TotalMark (মার্ক না থাকলে মোটের ঘর খালি থাকবে):<br> 
+IIf(IsNull([BanglaTotal]) And IsNull([EnglishTotal]) And IsNull([MathTotal]),Null,<br>
+IIf(IsNull([BanglaTotal]),0,[BanglaTotal])+<br>
+IIf(IsNull([EnglishTotal]),0,[EnglishTotal])+<br>
+IIf(IsNull([MathTotal]),0,[MathTotal]))<br>
+<br>
+<U> ৬ষ্ঠ শ্রেণির যোগ TotalMarks (মার্ক না থাকলেও মোটের ঘর ০ থাকবে):</U><br>
+
+
+ IIf(IsNull([TotalMark]),0,[TotalMark]*1)<br><br>
+2. <U> ৬ষ্ঠ শ্রেণির তিনটি কাইটেরিয়া নিয়ে  GPA:</U><br>
+ 
+ 
+ ([BanglaGradePoint]+[EnglishGradePoint]+[MathGradePoint])/3  <br>  
+ OR, ([BanglaGradePoint]+[EnglishGradePoint]+[MathGradePoint]+([4thgp]-2))/3<br>
+
+ <br>
+ 3. fail_sub:<br> 
+ (IIf([BanglaGrade]="F",1,0)+IIf([Englishgrade]="F",1,0)+IIf([Mathgrade]="F",1,0))<br><br>
+ 4. AB_sub:<br>
+  (IIf([BanglaGrade]="AB",1,0)+IIf([Englishgrade]="AB",1,0)+IIf([Mathgrade]="AB",1,0))<br><br>
+ 5. CountPassSubject:<br> 
+ 3-[fail_sub]-[AB_sub]<br><br>
+ 6. PassSubjectPts পাস বিষয়ের পয়েন্ট::<br> [CountPassSubject]*100000<br><br>
+ 7. GPAPts জিপিএ পয়েন্ট: <br>iif(isnull([GPA]),0,[GPA]*1000)<br><br>
+ 8. MinusPts রোল নং থেকে পয়েন্ট: <br>[Roll]*0.01 <br><br>
+ 9. 
+ 
+TotalPts:<br> [TotalMarks মার্ক না থাকলেও মোটের ঘর ০ থাকবে]+[PassSubjectPts পাস বিষয়ের পয়েন্ট ]+[GPAPts জিপিএ পয়েন্ট]-[MinusPts রোল নং থেকে পয়েন্ট]
+  
+ 
+ <br><br>
+ 10. rank:<br> DCount("*","sixmark_total কুয়েরির নাম ","[TotalPts]>=" & [TotalPts]<br><br>
+ <li>
+<U>  নবম দশম শ্রেণির জন্য দুইটি কাইটেরিয়া নিয়ে যোগ (মোট মার্ক এ যোগ করার জন্য) Math_Total:</U><br>
+ 
+  <br>
+
+
+
+IIf(IsNull([Math_mcq]) And IsNull([Math_cq]),Null, <br>
+IIf(IsNull([Math_mcq]),0,[Math_mcq])+<br>
+IIf(IsNull([Math_cq]),0,[Math_cq]))<br>
+ 
+ <br><br>
+ 
+ 
+ <li>
+<U>  নবম দশম শ্রেণির জন্য দুইটি কাইটেরিয়া নিয়ে যোগ (গ্রেড ও গ্রেড পয়েন্ট নির্ণয় করা জন্য) Math_Total2:</U><br>
+ 
+  <br>
+
+ Math_Total2: IIf([Math_cq]>=23 And [Math_mcq]>=10,[Math_cq]+[Math_mcq],Null)<br>
+ 
+ 
+ <br><br>
+ 
+ 
+ <li>
+<U>  নবম দশম শ্রেণির জন্য দুইটি কাইটেরিয়া নিয়ে   Math_Grade:</U><br>
+ 
+  <br>
+ 
+ 
+Math_Grade: IIf([Math_cq]<23,"F",IIf([Math_mcq]<10,"F", <br>
+IIf([Math_Total2]>=80,"A+",<br>
+IIf([Math_Total2]>=70,"A",<br>
+IIf([Math_Total2]>=60,"A-",<br>
+IIf([Math_Total2]>=50,"B",<br>
+IIf([Math_Total2]>=40,"C",<br>
+IIf([Math_Total2]>=33,"D",<br>
+IIf([Math_Total2]>=0,"F","AB")))))))))<br>
+ 
+ 
+  <br><br>
+ 
+ 
+ <li>
+<U>  নবম দশম শ্রেণির জন্য দুইটি কাইটেরিয়া নিয়ে  Math_GP:</U><br>
+ 
+  <br>
+ 
+ 
+ Math_GP: <br>
+ IIf([Math_Total2]>=80,5,<br>
+ IIf([Math_Total2]>=70,4,<br>
+ IIf([Math_Total2]>=60,3.5,<br>
+ IIf([Math_Total2]>=50,3,<br>
+ IIf([Math_Total2]>=40,2,<br>
+ IIf([Math_Total2]>=33,1,Null))))))<br>
+ 
+ <br><br>
+ 
+ 
+ <li>
+<U>   চার ধরনের যোগ :</U><br>
+ 
+  
+ 1. যে কোন একটি ঘরের মান যদি খালি থাকে (Null), তা হলে যোগ হবে না এবং খালি  ফলাফলের ঘর খালি থাকবে  (Null) Total: [Bangla1Total]+[EnglishTotal]+[MathTotal]<br> 
+2. যে কোন একটি ঘরের মান যদি খালিও থাকে (Null), তা হলেও যোগ হবে  এবং খালি  ফলাফলের ঘরে 0 থাকবে  Total:  NZ([Bangla1Total])+Nz([EnglishTotal])+Nz([MathTotal])<br> 
+3. যে কোন একটি ঘরের মান যদি খালিও থাকে (Null), তা হলেও যোগ হবে  এবং খালি  ফলাফলের ঘর খালি থাকবে  (Null):  <br> 
+ <br>
+Total:IIf(IsNull([BanglaMCQ]) And IsNull([BanglaCQ]) And IsNull([BAssignment]) And IsNull([BPlantation_Cleanliness]),Null,<br> IIf(IsNull([BanglaMCQ]),0,[BanglaMCQ])+<br>
+IIf(IsNull([BanglaCQ]),0,[BanglaCQ])+<br>
+IIf(IsNull([BAssignment]),0,[BAssignment])+<br>
+IIf(IsNull([BPlantation_Cleanliness]),0,[BPlantation_Cleanliness]))<br>
+
+4. কোন একটি ঘরের মান যদি ০ থেকে বড় না হয়,  তা হলে যোগ হবে না এবং খালি  ফলাফলের ঘর খালি থাকবে  (Null):<br>
+
+Total:(IIf([Bangla_GP]>0,[Bangla_GP])+<br>
+IIf([English_GP]>0,[English_GP])+<br>
+IIf([Math_GP]>0,[Math_GP]))<br>
+
+<br><br>
+
+
+<br>
+<br>
+<li>
+<U> Result/ নবম দশম শ্রেণির ফলাফল তৈরী করা ধাপ :</U><br> 
+1. নবম দশম শ্রেণির তিনটি কাইটেরিয়া নিয়ে যোগ TotalMark (মার্ক না থাকলে মোটের ঘর খালি থাকবে):<br> 
+IIf(IsNull([BanglaTotal]) And IsNull([EnglishTotal]) And IsNull([MathTotal]),Null,<br>
+IIf(IsNull([BanglaTotal]),0,[BanglaTotal])+<br>
+IIf(IsNull([EnglishTotal]),0,[EnglishTotal])+<br>
+IIf(IsNull([MathTotal]),0,[MathTotal]))<br>
+<br>
+<U> নবম দশম শ্রেণির যোগ TotalMarks (মার্ক না থাকলেও মোটের ঘর ০ থাকবে):</U><br>
+
+
+ IIf(IsNull([TotalMark]),0,[TotalMark]*1)<br><br>
+2. <U> নবম দশম শ্রেণির তিনটি কাইটেরিয়া নিয়ে  GPA1:</U><br>
+ 
+ 
+ ([BanglaGradePoint]+[EnglishGradePoint]+[MathGradePoint])/3  <br>  
+ OR, ([BanglaGradePoint]+[EnglishGradePoint]+[MathGradePoint]+([4thgp]-2))/3<br>
+ GPA2: IIf(IsNull([GPA1]),0,([GPA1]))<br>
+ GPA: IIf([GPA1]>5,5,[GPA1])<br>
+ <br>
+ 3. fail_sub:<br> 
+ (IIf([BanglaGrade]="F",1,0)+IIf([Englishgrade]="F",1,0)+IIf([Mathgrade]="F",1,0))<br><br>
+ 4. AB_sub:<br>
+  (IIf([BanglaGrade]="AB",1,0)+IIf([Englishgrade]="AB",1,0)+IIf([Mathgrade]="AB",1,0))<br><br>
+ 5. CountPassSubject:<br> 
+ 3-[fail_sub]-[AB_sub]<br><br>
+ 6. PassSubjectPts পাস বিষয়ের পয়েন্ট::<br> [CountPassSubject]*100000<br><br>
+ 7. GPAPts জিপিএ পয়েন্ট: <br>iif(isnull([GPA]),0,[GPA]*1000)<br><br>
+ 8. MinusPts রোল নং থেকে পয়েন্ট: <br>[Roll]*0.01 <br><br>
+ 9. 
+ 
+TotalPts:<br> [TotalMarks মার্ক না থাকলেও মোটের ঘর ০ থাকবে]+[PassSubjectPts পাস বিষয়ের পয়েন্ট ]+[GPAPts জিপিএ পয়েন্ট]-[MinusPts রোল নং থেকে পয়েন্ট]
+  
+ 
+ <br><br>
+ 10. rank:<br> DCount("*","sixmark_total কুয়েরির নাম ","[TotalPts]>=" & [TotalPts]<br>
+    OR,        DCount("*","sixmark_total কুয়েরির নাম","[Total Mark]>" & [Total Mark])+1<br>
+	<br><br>
+ <li>
+
+<U> Result/ নবম দশম শ্রেণির বাংলা বিষয়ের মার্ক তৈরী ধাপ :</U><br> 
+
+Bangla_cq: <br>
+IIf(IsNull([Bangla1_cq]) And IsNull([Bangla2_cq]),Null,<br>
+IIf(IsNull([Bangla1_cq]),0,[Bangla1_cq])+<br>
+IIf(IsNull([Bangla2_cq]),0,[Bangla2_cq]))<br>
+<br><br>
+Bangla_mcq: <br>
+IIf(IsNull([Bangla1_mcq]) And IsNull([Bangla2_mcq]),Null,<br>
+IIf(IsNull([Bangla1_mcq]),0,[Bangla1_mcq])+<br>
+IIf(IsNull([Bangla2_mcq]),0,[Bangla2_mcq]))<br>
+<br><br>
+Bangla_Total: <br>
+IIf(IsNull([Bangla_mcq]) And IsNull([Bangla_cq]),Null,<br>
+IIf(IsNull([Bangla_mcq]),0,[Bangla_mcq])+<br>
+IIf(IsNull([Bangla_cq]),0,[Bangla_cq]))<br>
+<br><br>
+Bangla_Total2: <br>
+IIf([Bangla_CQ]>=46 And [Bangla_MCQ]>=20,<br>
+[Bangla_CQ]+[Bangla_MCQ],Null)<br>
+<br><br>
+Bangla_Grade: <br>
+IIf([Bangla_cq]<46,"F",IIf([Bangla_mcq]<20,"F",<br>
+IIf([Bangla_Total2]>=160,"A+",<br>
+IIf([Bangla_Total2]>=140,"A",<br>
+IIf([Bangla_Total2]>=120,"A-",<br>
+IIf([Bangla_Total2]>=100,"B",<br>
+IIf([Bangla_Total2]>=80,"C",<br>
+IIf([Bangla_Total2]>=66,"D",<br>
+IIf([Bangla_Total2]>=0,"F","AB")))))))))<br>
+
+<br><br>
+Bangla_GP: <br>
+IIf([Bangla_Total2]>=160,5,<br>
+IIf([Bangla_Total2]>=140,4,<br>
+IIf([Bangla_Total2]>=120,3.5,<br>
+IIf([Bangla_Total2]>=100,3,<br>
+IIf([Bangla_Total2]>=80,2,<br>
+IIf([Bangla_Total2]>=66,1,Null))))))<br>
+<br><br>
+GRADE: <br><br>
+IIf([GPA]>=5,"A+",<br>
+IIf([GPA]>=4,"A",<br>
+IIf([GPA]>=3.5,"A-",<br>
+IIf([GPA]>=3,"B",<br>
+IIf([GPA]>=2,"C",<br>
+IIf([GPA]>=1,"D","F"))))))<br>
+<br><br>
+Result: 
+IIf([Fcount]=0,"উত্তীর্ণ",
+IIf([Fcount]=1,"এক বিষয়ে অকৃতকার্য",
+IIf([Fcount]=2,"দুই বিষয়ে অকৃতকার্য",
+IIf([Fcount]=3,"তিন বিষয়ে অকৃতকার্য",
+IIf([Fcount]=4,"সকল বিষয়ে অকৃতকার্য")))))
+
+<br><br>
+ <li>
+
+<U> টেবুলেশন শীটের উপরে সংক্ষিপ্ত ছাত্র/ছাত্রীর তথ্য :</U><br> 
+Report Header- এর মধ্যে  TextBox নিয়ে নিচের মত তথ্য দিন<br>
+
+মোট শিক্ষার্থী: =Count("[roll রোল নং কলাম]")<br> 
+পরীক্ষায় অংশ গ্রহনকারী: =Sum(IIf([Totals যে মোটে ০ নেই]>0,1,0))<br> 
+মোট পাশ: =Count("[gpa এর কলাম]")<br> 
+অনুপস্থিত শিক্ষার্থী: =Nz([Text231 মোট শিক্ষার্থী ])-Nz([Text232 পরীক্ষায় অংশ গ্রহনকারী])<br> 
+Or অনুপস্থিত শিক্ষার্থী:=Sum(IIf([AB_sub অনুপস্থিত শিক্ষার্থী কলাম]>0,1,0))
+পাশের হার : =([মোট পাশ]/[পরীক্ষায় অংশ গ্রহনকারী ])*100
+এক বিষয়ে ফেল: =Sum(IIf([fail_Sub ফেল বিষয়ের কলাম]=1,1,0))<br> 
+দুই বিষয়ে ফেল: =Sum(IIf([fail_Sub]=2,1,0))<br> 
+তিন বিষয়ে ফেল: =Sum(IIf([fail_Sub]=3,1,0))<br> 
+চার বিষয়ে ফেল: =Sum(IIf([fail_Sub]=4,1,0))<br> 
+বাংলা বিষয়ে ফেল সংখ্যা: =Count(IIf([bangla_Grade]="F",1))<br> 
+ A+   প্রাপ্ত  শিক্ষার্থী   সংখ্যা : =Sum(IIf([grade]="A+",1,0))
+ A    প্রাপ্ত শিক্ষার্থী  সংখ্যা : =Sum(IIf([grade]="A",1,0))
+ইংরেজি বিষয়ে ফেল সংখ্যা: =Count(IIf([english_Grade]="F",1))<br> 
+গণিত বিষয়ে ফেল সংখ্যা: =Count(IIf([math_Grade]="F",1))<br> 
+বিষয়ের নাম দেখানোর জন্য =DLookUp("[7 ফিল্ড নেম]","SubjectName টেবিল নেম")<br>
+পূর্ণমান মার্ক দেখানোর জন্য =DLookUp("[Six2Total]","ChangeNumberTotal")<br>
+বাংলা সবর্োচ্চ নাম্বার =Max([bangla_Total])<br>
+Or,  A+ প্রাপ্ত শিক্ষার্থী   সংখ্যা :=DCount("Grade","RClass_Two","Class='২য়' And Grade='A+'")<br>
+Or, ইংরেজি বিষয়ের   A+ প্রাপ্ত শিক্ষার্থী   সংখ্যা :=DCount("[ENG ফিল্ডের নাম]","GRADES কুয়েরির নাম","[ENG]='A+'")<br>
+১ বিষয়ে ফেল  =DCount("FailSubject","RClass_Two","Class='২য়' And FailSubject=1")<br>
+<br><br>
+ <li>
+
+<U> টেবুলেশন শীটে/মার্কশীটে গ্রেড   F হলে লাল এবং A+ সবুজ রং দেখানোর নিয়ম  :</U><br> 
+ ডিজাইন ভিউতে  গ্রেড সিলেক্ট করে উপর থেকে Formate -Conditional Formatting-<br>
+ New Rule- Equql to- "F" ফন্ট কালার লাল দিয়ে বোল্ড সেভ করব  <br>
+New Rule- Equql to- "A+" ফন্ট কালার সবুজ রং দিয়ে বোল্ড সেভ করব  <br>
+
+<br><br>
+ <li>
+
+<U> MS Excel Save & Print Buttons :</U><br> 
+
+Sub saveinvoiceandprint()<br>
+Dim saverng As Range<br>
+Dim pdfname As String<br>
+Dim path As String<br>
+Set saverng = Range("A1 যে ঘর থেকে শুরু:N24যে ঘর পর্যন্ত ") <br>
+pdfname = Range("P24 এই ঘরে ফাইলের নাম লিখতে হবে") <br>
+path = "C:\Users\wohab sir\Desktop\ss\ ডেক্সটপে ss নামে একটি ফোল্ডার দেখানো হয়েছে" <br>
+saverng.ExportAsFixedFormat xlTypePDF, Filename:=path & pdfname & ".pdf", openafterpublish:=True <br>
+
+End Sub <br>
+
+
+
+
+
+<br><br>
+ <li>
+
+<U> গণিত :</U><br> 
+[formfilup]এর মোট টাকা 2000 কে board_fee-430, Centre_fee-670 বাকি টাকা Baton বেতন দেখাতে হবে।<br>
+board_fee: IIf(IsNull([formfilup]),Null,1*430)<br>
+Centre_fee: IIf(IsNull([formfilup]),Null,1*670)<br>
+Baton বেতন: [formfilup]-[board]-[Centre]<br>
+<br><br>
+[anual_exa বাষিক পরীক্ষায় কোন ছাত্র 1000 টাকা দিলে, পরীক্ষায় ফি 200টাকা বাদ দিয়ে বেতন কত হবে?]<br>
+exam_fee: IIf(IsNull([anual_exa]),Null,[anual_exa]-200)<br>
+Baton বেতন: [anual_exa]-[exam_fee]<br>
+totals মোটের ঘরে 0 আনার জন্য : Nz([totalযে ঘরে 0 নাই],0)<br>
+<br><br>
+কোন বিভাগে কত পারসেন্ট শিক্ষক আছে তা জানা জন্য:<br>
+প্রথমে  tbl_info নামের টেবিল থেকে  District ফিল্ড দুই বার নিয়ে একটি কুয়েরি করি। তারপর Totals এ কিল্ক করি  <br>
+একটি District থাকবে Group By এবং অন্যটি Count থাকবে। District_Quare নাম দিয়ে কুয়েরিটি সেভ করব।<br>
+ উক্ত District_Quare টি দিয়ে আরো একটি কুয়েরি তৈরি করি। পাশের ঘরে একটি বিল্ড করি<br>
+percent_total: [CountOfDistrict বিভাগ এর যোগফল এর ঘর]/DCount("*","tbl_info টেবিলের নাম")<br>
+percent_total সিলেক্ট করে প্রোপারট্রিজ- Format- Percent - decimal Placese-1<br>
+<br><br>
+
+
+
+ <li>
+
+<U> Division</U><br>
+ <U> District</U><br>
+ <U> Upozila/জেলা থেকে উপজেলার তথ্য এক টেবিল থেকে অন্য টেবিলে নেওয়া   :</U><br> 
+প্রথমে  Student_Information টেবিল থেকে তথ্য নিয়ে একটি সিঙ্গেল ফরম তৈরী করি<br>
+উক্ত ফরমের Division , District , Upozila প্রত্যকটির উপরে ডানবাটনে কিক্ল Change To- Combo box করব।<br>
+<br>
+Division সিলেক্ট করে প্রোপারট্রিজ- ডাটা- rows source- এর তিন ...... এর পর Division যে টেবিলে আছে তা সিলেক্ট ।<br>
+তার পর ঐ টেবিল থেকে শুধু  Divisionটি নিব। এবং ভিতরে খালি জায়গায় কিক্ল করে ডান পাশের Unique Value- Yes করব। Close করব<br>
+ফরমটি বন্ধ করে আবার চালু করব। দেখব আসছেকিনা?<br>
+<br>
+District সিলেক্ট করে প্রোপারট্রিজ- ডাটা- rows source- এর তিন ...... এর পর District যে টেবিলে আছে তা সিলেক্ট ।<br>
+তার পর ঐ টেবিল থেকে প্রথমে নিব  District তার পর Division নিব। এবং  Division এর কাইটেরিয়াতে ডানবাটনে কিক্ল Build -এর ঘরে <br>[Forms]![Admission_Form]![Division]  এর পর ওকে।<br>
+এবং ভিতরে খালি জায়গায় কিক্ল করে ডান পাশের Unique Value- Yes করব। Close করব<br>
+ফরমটি বন্ধ করে আবার চালু করব। দেখব আসছেকিনা?<br>
+<br>
+
+Upozila সিলেক্ট করে প্রোপারট্রিজ- ডাটা- rows source- এর তিন ...... এর পর Upozila যে টেবিলে আছে তা সিলেক্ট ।<br>
+তার পর ঐ টেবিল থেকে প্রথমে নিব  Upozila তার পর District এবং তারপর Division  নিব। এবং  District এর কাইটেরিয়াতে ডানবাটনে কিক্ল <br>Build -এর ঘরে [Forms]![Admission_Form]![District]  এর পর ওকে।<br>
+এবং ভিতরে খালি জায়গায় কিক্ল করে ডান পাশের Unique Value- Yes করব। Close করব<br>
+ফরমটি বন্ধ করে আবার চালু করব। দেখব আসছেকিনা?<br>
+<br>
+Division এর সাথে District পরিবর্তন করা জন্য<br>
+উক্ত ফরমের Division  সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On Change- [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- নিচের<br> কোডটি লিখব এবং সেভ করব।<br>
+Private Sub Division_Change()<br>
+District.Requery<br>
+End Sub<br>
+<br>
+
+উক্ত ফরমের District  সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On Change- [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- নিচের <br>কোডটি লিখব এবং সেভ করব।<br>
+Private Sub District_Change()<br>
+Upozila.Requery<br>
+End Sub<br>
+<br>
+Null /খালি আসার জন্য করা যায়ঃ<br>
+উক্ত ফরমের Division  সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On Got Focus- [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- <br>নিচের কোডটি লিখব এবং সেভ করব।<br>
+Private Sub Division_GotFocus()<br>
+District.Value = ""<br>
+End Sub<br>
+<br>
+উক্ত ফরমের Division  সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On Got Focus- [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- <br>নিচের কোডটি লিখব এবং সেভ করব।<br>
+Private Sub District_GotFocus()<br>
+Upozila.Value = ""<br>
+End Sub<br>
+
+
+
+<br><br>
+
+
+<li>
+
+<U> Combobox থেকে সরাসরি কোন রিপোট ওপেন করা </U><br>
+qryTest নামের  একটি কুয়েরির কাইটেরিয়াতে [Forms]![frmTest]![Combo4] কমান্ড দিব। <br>
+ frmTest নামের একটি ফরমে Combobox তৈরী করে নাম দিব (Combo4),<br>
+ Combo4 সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -After Update- [Event -Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- <br>
+ নিচের কোডটি লিখব এবং সেভ করব।<br>
+ RepTest নামের  একটি রিপোট  তৈরী করব।<br>
+<br>
+Private Sub cboTest_AfterUpdate()<br>
+DoCmd.OpenQuery "qryTest", acViewNormal, acEdit<br>
+DoCmd.OpenReport "RepTest", acViewReport<br>
+DoCmd.Close acQuery, "qryTest"<br>
+DoCmd.Close acForm, "frmTest"<br>
+End Sub<br>
+
+<br><br>
+
+<li>
+
+<U> Combobox তৈরী করার নিয়ম </U><br>
+1. টেবিল থেকে Row source নিয়ে <br>
+টেবিলের ডিজাইন ভিউতে গিয়ে Lookup- Row source থেকে "GM";"DM";"GET";"নাই"<br>
+Copy করে নিয়ে <br>
+ফরমে ডিজান ভিউতে গিয়ে ডিজাইন থেকে  Combobox তৈরী করে Cancel করব।<br>
+Combobox সিলেক্ট করে Data -Row source গিয়ে "GM";"DM";"GET";"নাই" <br>
+পেস্ট করব Row source type গিয়ে Value list এবং সেভ করব।<br>
+<br>
+2. text-box কে Combobox তৈরী করা <br>
+text-box অংন করে ডান বাটনে কিক্ল Change To থেকে Combobox ।<br>
+Combobox সিলেক্ট করে Data -Row source গিয়ে .... প্রয়োজনীয় Table/কুয়েরি সিলেক্ট করে Add প্রোয়োজনীয় ফিল্ড নিব <br>
+,ভিতরের সাদা স্থানে বামবাটনে কিক্ল  ডান পাশ থেকে Unique Value : Yes<br>
+<br>
+Unique Value/ একের অধিক বার কোন তথ্য কম্ববক্সে আসলে :<br>
+Combobox সিলেক্ট করে Data -Row source গিয়ে .... Crosstab- select<br>
+<br><br>
+৩. Field a Record থেকে  <br>
+কন্টোল সোস দেখিয়ে ফরম তেরী করে ডিজাইন থেকে  Combobox -Field a Record.......... Next....
+<br><br>
+4. ডাটা  স্টোর করার জন্য  I will Type থেকে  <br>
+কন্টোল সোস দেখিয়ে ফরম তেরী করে ডিজাইন থেকে   Combobox -I will Type.......... Next.... প্রয়োজনীয় লিখব 
+Next.... Store that valu in যেখানে তথ্য টি সেভ করব তা সিলেক্ট করে Next নাম দিয়ে সেভ করব।
+<br>
+<br>
+5. ডাটা  স্টোর করার জন্য যে কোন টেবিল বা কুয়েরি থেকে   <br>
+কন্টোল সোস দেখিয়ে ফরম তেরী করে ডিজাইন থেকে  Combobox -I want the combo box .......... Next....প্রয়োজনীয়  টেবিল বা কুয়েরি 
+Next.... Store that valu in যেখানে তথ্য টি সেভ করব তা সিলেক্ট করে Next নাম দিয়ে সেভ করব।
+
+
+<br><br>
+
+
+
+<li>
+
+<U> Main Form এর সাথে Sub_Form এর লিং করা   </U><br>
+Sub_Form সিলেক্ট করে ডাটা- Link Master Fields: .... প্রয়োজনীয় একই রকম ফিল্ড সিলেক্ট করে ওকে।<br>
+
+<br><br>
+
+<li>
+
+<U> Combo Box এর তথ্য  DefaultValue করাঃ  </U><br>
+যে ফরমে  DefaultValue কম্বোবক্স সেট করতে হবে ঐ ফরম সিলেক্ট করে Event এর নিচ থেকে -After Update -[Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল
+<br>
+Private Sub Form_AfterUpdate()<br>
+Combo151.DefaultValue = """" & Me.Combo151 & """"<br>
+Combo161.DefaultValue = """" & Me.Combo161 & """"<br>
+Combo170.DefaultValue = """" & Me.Combo170 & """"<br>
+End Sub<br>
+এখানে, Combo151 হল ১নং কম্বোবক্স এর নাম <br>
+Combo161 হল 2নং কম্বোবক্স এর নাম <br>
+Combo170 হল 3নং কম্বোবক্স এর নাম <br>
+
+<br><br>
+
+<li>
+
+<U> একের অধিক পৃষ্ঠা Autofill করাঃ </U><br>
+<br>
+প্রথমে Autofill এডঅসটি ইন্সটল করে পিন করে নিব।<br>
+তারপর ওয়েভ সাইটে গিয়ে প্রয়োজনীয় ফিল্ড পূরণ করে <br>
+Autofill এর আইকনের উপরে ডানবাটনে ক্লিক Add rules for this page..... <br>
+Choose a Profile এর ( ড্রপ-ডাউন) থেকে New... প্রয়োজনীয় নাম লিখে ওকে।<br>
+তারপর Generate Autofill roles.. কিক্ল।<br>
+একইভাবে প্রেয়োজনীয় পেজ তৈরী করব।<br>
+<br>
+সেটিং ঠিক করাঃ<br>
+Autofill এর ডান বাটনে ক্লিক<br>
+Manage Extention<br>
+Autofill এর  ডানপাশে ... তিন ডট  Options-<br>
+Other Stuff- থেকে <br>
+Autofill active profile only এর ঠিক চিহৃ তুলে দিব ()<br>
+Autofill delay:এর ঠিক চিহৃ  দিব ()<br>
+<br>
+
+2য় পেজ , ৩য়, ৪র্থ পেজ অটোমেটিক অটোমেটিক আসার জন্য:<br>
+Form Fields নিচের বামপাশের কোনের Select Profile এর ( ড্রপ-ডাউন) থেকে <br>
+প্রয়োজনীয় নাম (2য় পেজ , ৩য়, ৪র্থ পেজ) সিলেক্ট করে নিচের  Site এর ঘরে ঠিকানা<br>
+<br>
+http://crvs-institute.banbeis.gov.bd/students-enroll/2045420/page-2<br>
+http://crvs-institute.banbeis.gov.bd/students-enroll/2045420/page-3<br>
+http://crvs-institute.banbeis.gov.bd/students-enroll/2045420/page-4<br>
+থেকে অথবা মেইন সাইট থেকেও কমন ঠিকানা কপি করে ডান পাশের প্রত্যাকটি খালি Site(Document title or URL required to trigger autofill.) এর ঘরে কমন ঠিকানাটা কপি -পেস্ট করব।<br>
+যেমন<br>
+crvs-institute.banbeis.gov.bd<br>
+crvs-institute.banbeis.gov.bd<br>
+crvs-institute.banbeis.gov.bd<br>
+একইভাবে প্রত্যাকটি পেজ (2য়  , ৩য়, ৪র্থ পেজ) সিলেক্ট করে এই কাজটি করতে হবে।<br>
+ ঠিক করতে হবে।<br>
+<br>
+
+
+
+
+
+
+Autofill এর ঠিকানা  পরিবর্তনের  জন্যঃ<br>
+Form Fields নিচের বামপাশের কোনের Select Profile এর ( ড্রপ-ডাউন) থেকে <br>
+প্রয়োজনীয় নাম সিলেক্ট করে নিচের Site এর ঘরে ঠিকানা ঠিক করতে হবে।<br>
+<br>
+
+Autofill এর নাম  কাটার জন্যঃ<br>
+Form Fields নিচের বামপাশের কোনের Select Profile এর ( ড্রপ-ডাউন) থেকে Manage প্রয়োজনীয় নাম এডিট করব।<br>
+কাজ শেষে সেভ করব।<br>
+<br>
+
+Autofill এর তথ্য সেভ করার  জন্যঃ<br>
+Form Fields নিচের বামপাশের কোনের Select Profile এর ( ড্রপ-ডাউন) থেকে <br>
+প্রয়োজনীয় নাম সিলেক্ট করে নিচের বামপাশ থেকে + চিহ্ন (Add new rule) ডানপাশ থেকে - চিহ্ন  Remove this rule <br>
+তখন নিচের বামপাশ  থেকে Save বাটন দেখা যাবে।<br>
+<br><br>
+
+
+
+
+
+
+
+<li>
+
+<U> টাকা লেখার ফন্টকে রং দেওয়া   </U><br>
+<br>
+ডিজাইন ভিউতে গিয়ে Currency তে কাসর রেখে <br>
+formate ঘরে <br>
+#,##0.00[Red]  লিখতে হবে। ফন্ট লাল রং  করার জন্য<br>
+"TK "#,##0.00[Blue]  লিখতে হবে। TK চিহ্ন সহ ফন্ট বুল রং  করার জন্য<br>
+$#,##0.00[Green]  লিখতে হবে। $ চিহ্ন সহ ফন্ট সবুজ রং  করার জন্য<br>
+<br>
+<li>
+<br><br>
+
+wordpress localhost server এ থিম এবং প্লাগিন অফলাইনে ইন্সটল করাঃ <br>
+<br>
+C:\xampp\htdocs\wohabsir\wp-content\themes<br>
+C:\xampp\htdocs\wohabsir\wp-content\plugins<br>
+<br><br>
+
+<li>
+
+<br><br>
+
+প্রয়োজনীয় কয়েকটি plugins এর নাম<br><br>
+
+
+
+
+
+1) ওয়েবসাইট Backup/Restore করার plugins<br>
+Updraft  <br>
+
+<a href="https://wordpress.org/plugins/updraftplus/">ডাউনলোড</a>
+<br>
+<br>
+<a href="https://drive.google.com/file/d/1pUMhHz6wntt3q1QXhlvXgCj0UrqR1GTi/view?usp=sharing/">All_In_One_ডাউনলোড অফলাইনে ডাটাব্যাকআপ করা</a>
+<br><br>
+
+
+
+
+2) নিউজপেপারের মত লেখা স্কল করার plugins<br>
+News Ticker Widget for Elementor<br>
+
+<a href="https://wordpress.org/plugins/news-ticker-widget-for-elementor/">ডাউনলোড</a>
+<br>
+<br>
+
+
+3)পেজ তৈরী করার plugins<br>
+Elementor<br>
+
+<a href="https://wordpress.org/plugins/elementor/">ডাউনলোড</a>
+<br><br>
+
+
+4) Header and Footer তৈরী করার plugins<br>
+Elementor Header & Footer Builder<br>
+
+<a href="https://wordpress.org/plugins/header-footer-elementor/"> ডাউনলোড </a>
+<br>
+ব্যবহারঃ Dashboard- Appearance- Elementor Header & Footer Builder- Add New- <br>
+Add titel এর ঘরে Header/ Footer লিখব।<br>
+Type of Template এর ঘরে Header/ Footer সিলেক্ট করব।<br>
+Display On এর ঘরে Entire website সিলেক্ট করব।<br>
+User Roles এর ঘরে All সিলেক্ট করব।<br>
+  Publish- <br>
+<br>
+
+
+
+5)Header এর মাধ্যমে মেনুবার  তৈরী করতে  <br>
+Elementor Header & Footer Builder<br>
+navigation Menu 
+<br><br>
+
+6) যে কোন plugins কে পূবের ভাসনে যাওয়ার জন্য <br>
+Rollback 
+<br><br>
+
+
+
+
+7) নোটিশ দেওয়ার জন্য <br>
+[notice-board]<br>
+
+
+<a href="https://wordpress.org/plugins/notice-board/">নোটিশ বোর্ড ডাউনলোড</a><br>
+
+<br>
+8) Website Reset দেওয়ার জন্য (কোন কিছু থাকবে না) <br>
+WP Reset<br>
+
+
+<a href="https://downloads.wordpress.org/plugin/wp-reset.latest-stable.zip">WP Reset ডাউনলোড</a><br>
+
+<br>
+ব্যবহারঃ Tools- WP Reset- Reset- Site Reset থেকে <br>
+Reactivate current theme - Hello Elementor ঠিক চিহ্ন দিব<br>
+Reactivate WP Reset plugin ঠিক চিহ্ন দিব<br>
+Reactivate all currently active plugins ঠিক চিহ্ন দিব<br>
+নিচে টাইপ করব reset<br>
+তারপর Reset Site<br>
+
+<br>
+9) Bangla Date Display <br>
+Bangla Date Display<br>
+
+
+<a href="https://wordpress.org/plugins/bangla-date-display/">Bangla Date Display ডাউনলোড</a><br>
+
+<br>
+
+
+<br>
+10) Simple Allow Copy addons/ ওয়েব সাইটের সকল তথ্য কপি করারaddons/মাউসের ডানবাটন এনাবল করারঃ
+ <br>
+Simple Allow Copy
+<br>
+
+
+<br>
+
+<br>
+11) Image Assistant addons ওয়েব সাইটের সকল ছ্বি ডাউনলোড করার addonsঃ
+ <br>
+ImageAssistant
+<br>
+
+ব্যবহারঃ ওয়েব সাইটের ডানবাটনে কিক্ল করে ImageAssistant - Extract Current Page- সকল ছবি দেখা যাবে। 
+<br>
+
+
+
+Wordpress Tutorials:
+<a href="https://www.youtube.com/playlist?list=PLm64fbD5Onxti7DiUkX3UX3P2tuiEw30E">Wordpress Tutorials ডাউনলোড</a><br>
+
+
+
+
+<li>
+<br><br>
+xampp Software and  wordpress Install/ ইন্সটল করাঃ <br>
+ প্রথমে xampp Software টি ইন্সটল করে, open করে  Apache action এবং MySQL action Start করে Minimize করে রাখব।
+<br>
+
+ওয়েব ব্রাউজারের মধ্যে localhost/phpmyadmin/ Databases- Create Databases  এর ঘরে  (wohabsir) লিখে Create।<br>
+
+  
+ইন্সটলকৃত xampp Software এর  htdocs (C:\xampp\htdocs) এই লোকেশানে wordpress এর ডাউনলোডকৃত ফাইটি আনজিপ করে পেষ্ট করব।(Folder এর নাম দিব wohabsir)  <br>
+
+আবার ওয়েব ব্রাউজারের মধ্যে localhost/wohabsir -English- Continue - Let go - <br>
+Databases Name  এর ঘরে  (wohabsir) <br>
+ User Name  এর ঘরে (root)<br>
+Password   এর ঘরে (  খালি রাখব)<br>
+এবং নিচে কোন কিছু পরিবর্তন না করে <br>
+Submit<br>
+Run the Instlallation<br>
+Username এর ঘরে (admin)<br>
+Password এর ঘরে (admin)<br>
+Confirm এ ঠিক চিহ্ন দিব।<br>
+ইমেইল দিব।<br>
+Install<br>
+login<br>
+<br><br>
+
+
+<li>
+
+<strong>[bangla_date]</strong><br>
+<strong>[english_date]</strong><br>
+<strong>[hijri_date]</strong><br>
+<strong>[bangla_time]</strong><br>
+<strong>[bangla_day]</strong><br>
+<strong>[bangla_season]</strong><br>
+
+
+
+[bangla_date]<br>
+[english_date]<br>
+[hijri_date]<br>
+[bangla_time]<br>
+[bangla_day]<br>
+[bangla_season]<br>
+final notice-board<br>
+[notice-board]<br>
+
+
+<strong>[english_date]</strong><br>
+<strong>[bangla_time]</strong><br>
+<strong>[bangla_day]</strong><br>
+<strong>[bangla_season]</strong>
+
+<li>
+
+[notice-board format="table"]
+
+<br><br>
+<li>
+
+<U>  *****zen Codeing Plugins এর ব্যবহারঃ   </U><br>
+
+					1. html:5= Ctrl+E <br>
+					2. link:css <br>
+					3. ul>li*5>a <br>
+					4. img <br>
+					5. a <br>
+					6. table>tr*3>td*5 <br>
+					7. .title <br>
+					8. #title <br>
+					9.ul>li.item$@-*5 <br>
+					10. .banner  <br>
+					11. #one   <br>
+
+
+
+
+
+<br><br>
+
+<li>
+
+
+<br><br>
+					
+		******* Indent Plugins এর ব্যবহারঃ <br>
+					Plugins- Indent By Fold- Reindent File <br>
+
+
+<br><br>
+<li>
+
+External css<br>
+< link rel="stylesheet" type="text/css" href="style.css" media="all" /><br>
+
+
+style.css ফাইলের মধ্যে  <br>
+p {<br>
+	background-color:black;<br>
+	color: white;<br>
+	width: 50%;<br>
+	height: 200px;<br>
+	border: 3px solid green;<br>
+	padding: 10px;<br>
+	margin-top: 0px;<br>
+	margin-bottom: 100px;<br>
+	margin-right: 150px;<br>
+	margin-left: 80px;<br>
+	font-size: 18px;<br>
+	text-align: justify;<br>
+	font-weight: 400;<br>
+	font-family: NikoshBan;<br>
+	line-height: 26px;<br>
+	float: left;<br>
+	font-family: kalpurushregular !important; Times New Roman;<br>
+	
+	}<br>
+	
+	html থাকবে <br>
+	< div  id="header"> 		 এখানে লিখুন <br>
+		< /div><br>
+	css থাকবে <br>
+	#header{ <br>
+	 <br>
+	} <br>
+	
+	html থাকবে <br>
+	< div  class="banner"> 		 এখানে লিখুন <br>
+		< /div><br>
+	css থাকবে <br>
+	.banner{ <br>
+	 <br>
+	} <br>
+
+html এ .banner লিখে CTRl+E চাপলে  <br>
+< div class="banner">  < /div> আসবে।<br>
+
+html এ #class লিখে CTRl+E চাপলে  <br>
+< div id="class">< /div>
+
+<li>
+Inline CSS/ element CSS <br>
+< h1 style="color: blue; background-color:black;">  <br>
+Hello এখাননে লিখুন  <br>
+< /h1>
+
+<br><br>
+
+
+<li>
+<ul>
+	<li>  aa  </li>
+	<li>  bb  </li>	
+	<li>  cc  </li>	
+	<li>  dd  </li>	
+	<li>  ee  </li>
+</ul>
+
+<li>
+আজকের আয়|ঃ<br>
+	ফরমের আনবাউন্ড বক্সে <br>
+	=Nz(Dsum("[takain]","taka_balance","[date00]=Date()"),0)<br>
+	<br>
+		takain= taka_balance কুয়েরির  আয়ের ফিল্ড<br>
+<br>
+		date00= taka_balance কুয়েরির  তারিখ ফিল্ড<br>
+<br>
+		taka_balance= কুয়েরির নাম<br>
+
+	<br>
+	=Nz(Dsum("[Net_taka]","InvoiceDetails","[saleDate]=Date()"),0)<br>
+	<br>
+
+	=Nz(Dsum("[Payment]","CollectionSubfrm","[CollectionDate]=Date()"),0)<br>
+
+		
+
+
+<li>
+
+আজকের ব্যয়<br>
+	=Nz(DSum("[takaout]","taka_balance","[date00]=Date()"),0)<br>
+
+<li>
+আজকের ব্যালেন্স<br>
+	=Nz([Text71]-[Text73])<br>
+<br>
+<li>
+
+
+collectionform এর মধ্যে Conections_subform এর  একজনের আজকের জমা জানা:<br>
+ 
+	collectionform এ Unboun বক্স control<br>
+	=Nz(DSum("Payment","Conections_table","CollectionDate=Date()" & "AND StudentID=[Conections_subform].Form![StudentID]"),0)<br>
+
+	Payment= Conections_table টেবিলের টাকার ফিল্ড<br>
+
+	CollectionDate= Conections_table টেবিলের  তারিখ ফিল্ড<br>
+
+	StudentID= Conections_subform ফরমের  আইডি  ফিল্ড<br>
+
+	Conections_table = টেবিলের নাম<br>
+
+<br>
+
+<li>
+
+
+
+collectionform ফরম এর মধ্যে Payment নামের একটি ফিল্ড এর মধ্যে  Conections_subform এর  একজনের মোট আনার জন্য :<br>
+ <br>
+	Conections_subform সাবফরমের Form Footer এ Unboun বক্স (নাম Total )  control প্রয়োজনীয় যোগ =Sum([Payment]) করব। উক্ত (নাম Total ) ঘরটি মেইন ফরমে নিয়ে যাব।<br>
+	collectionform ফরম এর মধ্যে একটি বাটন তৈরী করে কোড লিখবঃ<br>
+	
+	Me.Payment=[Conections_subform].Form![Total]<br>
+<br>
+	এখানে Payment= collectionform এর একটি ফিল্ড<br>
+	Conections_subform= সাবফরমের নাম<br>
+	Total= সাবফরমের Form Footer এ Unboun বক্স (নাম Total )<br>
+<br>
+<li>
+জানুয়ারীতে , ফেরুয়ারীতে /সালে.... মোট কত জমা তা জানার জন্যঃ<br>
+একটি কুয়েরি তৈরি করব এমন একটি টেবিল দিয়ে যার দুটি ফিল্ড থাকবে CollectionDate এবং Payment <br>
+Payment এর ঘরটি কুয়েরিতে আনব। <br>
+Totals এ ক্লিক করে Sum করব।<br>
+ডানপাশের দুটি ঘরে পর পর দুটি কোড লিখব।<br>
+Month: Format([CollectionDate],"mmmm")<br>
+Year: Format([CollectionDate],"yyyy")<br>
+
+<br>
+
+<li>
+শর্তদিয়ে বিয়োগঃ<br>
+ভতি সময় কোন ছাত্র 750 টাকা দিল এর মধ্যে 600 ভতি এবং বাকী 150 টাকা বেতন<br>
+বা কেহ যদি 600 টাকার সমান অথবা 600 এর থেকে বেশি প্রদান করে তাহলে  600 ভতি রেখে  বাকী অতিরিক্ত টাকা বেতনে জমা হবে , কিন্তু 600 টাকার কমহলে তা শুধু ভতিতে থাকবে।
+কুয়েতিতে<br>
+বেতন:IIf([admissionfee]>=600,[admissionfee]-600,0)<br>
+ভতি: Nz([admissionfee])-Nz([বেতন])<br>
+এখানে,<br>
+admissionfee= 750 টাকার দেওয়া ফিল্ড এর নাম <br>
+<br>
+অথবা ফরমফিলাপের সময় কোন ছাত্র 1900 টাকা দিল  এর মধ্যে 1200 টাকা ফরমফিলাপ এবং বাকী  উপরের 700 টাকা বেতন <br>
+
+বেতন2:IIf([formfillup]>=1200,[formfillup]-1200,0)
+ফরমফিলাপফি: Nz([formfillup])-Nz([বেতন2])<br>
+এখানে,<br>
+formfillup= 1900 টাকার দেওয়া ফিল্ড এর নাম <br>
+<li>
+
+উপস্থিতিঃ<br>
+Copy_Of_Student_Form এ Unboun বক্সে  <br>
+=DCount("[InClass]","PresentQ","[S_ID]=Forms!Copy_Of_Student_Form![S_ID]")<br><br>
+
+এখানে,<br>
+InClass= PresentQ কুয়েরির ফিল্ড এর নাম <br>
+PresentQ= কুয়েরির নাম<br>
+S_ID= Copy_Of_Student_Form এর ফিল্ড<br>
+Copy_Of_Student_Form= যে ফরমে উপতস্থতি দেখাতে চাই (বর্তমানে আছি এ ফরমে নাম)<br>
+<br>
+<li>
+
+
+	
+(FeeConnectionF) ফরমের মধ্যে (fees)টেবিল   থেকে কোন  তথ্য  আনা<br>
+<br>
+জানুয়ারীর বেতন 31/01/2022 তারিখ বা এর পর দেখা যাবে  <br>
+	FeeConnectionF ফরম এর মধ্যে একটি বাটন নিয়ে বাটন সিলেক্ট করে প্রপারটিজ Event এর নিচ থেকে -On Click [Event Procedure]এর ডানে *** (তিনটি ডট) কিক্ল- নিচের কোডটি লিখব এবং সেভ করব।<br>
+<br>
+	If DateValue("01/01") < Date Then<br>
+    Admissation= DLookup("[Fee]","fees","[Fee_Type]='Admissation'" & "And Class=Forms!FeeConnectionF!Class")<br>
+    Else: Admissation = 0<br>
+    End If<br>
+    <br>
+    If DateValue("01/31") < Date Then<br>
+    Jan = DLookup("[Fee]", "fees", "[Fee_Type]='Jan'" & "And Class=Forms!FeeConnectionF!Class")<br>
+    Else: Jan = 0<br>
+    End If<br>
+    <br>
+    If DateValue("02/28") < Date Then<br>
+    Feb = DLookup("[Fee]", "fees", "[Fee_Type]='Feb'" & "And Class=Forms!FeeConnectionF!Class")<br>
+    Else: Feb = 0<br>
+    End If<br>
+    <br>
+    DoCmd.RefreshRecord<br>
+
+
+এখানে,<br>
+Admissation=  fees টেবিলের Fee_Type ফিল্ড এর নাম  এবং  FeeConnectionF ফরমের ঘরের নাম <br>
+Fee= fees টেবিলের  ফিল্ড এর নাম <br>
+fees= টেবিলের  এর নাম <br>
+Fee_Type= fees টেবিলের  ফিল্ড এর নাম <br>
+Class = fees টেবিলের  ফিল্ড এর নাম <br>
+FeeConnectionF = যে ফরমে তথ্য আনতে চাই ঐ ফরমে নাম <br>
+01/31= কম্পিউটারের তারিখ অনুযায় বসবে অথবা (31/01) <br>
+<br><br>
+<li>
+
+
+
+
+
+
+
+MS Excel Print/প্রিন্ট : <br>
+	লাইন নিচে/ নিচে নেওয়াঃ Home-  Wrap Text/ অথবা , কীবোর্ড থেকে Alt চাপ দিয়ে এন্টার চাপতে হবে।<br>
+	Freezeঃ  View- Freez Panens <br>
+	Sort: প্রয়োজনীয় কলাম সিলেক্ট Data- Sort- Expand the Selection- Sort- প্রয়োজনীয় কমান্ড দিয়ে OK<br>
+	Filter / খুজে বের করাঃ হেডিং এর মধ্যে কার্সর রেখে Data- Filter এখন হেডিং এর মধ্যে ড্রপ-ডাউন দেখা যাবে প্রয়োজনীয় তা সিলেক্ট করে খুজব।<br>
+	Print /প্রিন্ট : Ctrl+ P = Page Setup = <br>
+	Page থেকে  Protaint /Landscape 	সাইজ থেকে A4 দিব এবং  Scaleing থেকে প্রয়োজনীয় 90%<br>
+	Margine থেকে Center On Page এর Horizontally -Ok<br>
+	হেডিং এক লাইন প্রতি পৃষ্ঠায় আনাঃ Page Layout- Print Titels- Sheet- Rows to Repate at top এর এরোতে কিক্ল।  তারপর প্রয়োজনীয় অংশটুকু মাউসের মাধ্যমে সিলেক্ট এরোতে ক্লিক ওকে কিক্ল।<br>
+	<br>
+<li>
+
+save And Close<br>
+DoCmd.Save<br>
+DoCmd.Close<br>
+<br>
+<li>
+
+
+ Save And New<br>
+DoCmd.Save<br>
+DoCmd.GoToRecord , , acNewRec<br>
+
+
+<br>
+<li>
+ছাত্রের নাম লিখলে রোল নং নিজে নিজে আসাঃ<br>
+দুটি বাটন Save And New এবং save And Close তৈরি করে উপরে কোড দিব।<br>
+উপরে একটি কম্বোবক্স তৈরী করব (নামcmbclass)  শ্রেণিকে দেখিয়ে নবম. দশম দিয়ে<br>
+ছাত্রের নামের ঘর (sname) সিলেক্ট করে Event- On Key Press- [Event Procedure]- ...<br>
+Private Sub sname_KeyPress(KeyAscii As Integer)<br>
+Me.Roll.Value = DMax("[Roll]", "student", "Class=Forms!studentForm![cmbclass]") + 1<br>
+End Sub<br>
+<br>
+এখানে<br>
+	Roll= রোল নং এর ফিল্ড নাম<br>
+	student= টেবিলের নাম<br>
+	Class= শ্রেনির এর ফিল্ড নাম<br>
+	studentForm= যে ফরমে কাজ করি ঐ ফরমের নাম<br>
+	cmbclass= কম্ববক্সে র নাম<br><br>
+
+
+
+<li>
+
+
+
+দশমিকের পর  দুই সংখ্যা লেখার নিয়ম/(5.36) <br>
+	Data Type -Number দিয়ে  <br>
+	Field Size -Double<br>
+	Formate- Standard<br>
+	Decimal Place -2<br>
+<li>
+
+
+<br>
+Adobe Photoshop সিগনেচার এর  background Remove করার জন্য শটকাট কমান্ড <br>
+
+কী বোড থেকে (Alt + Shift + M)
+
+<br>
+<br>
+
+<li>
+
+কম্পিউটারে যতগুলো কপি করা হয়েছিল তা দেখার জন্য  শটকাট কমান্ড <br>
+কী বোড থেকে (Windows key  + V)
+<br>
+</ol>
+
+</body>
+</html>
