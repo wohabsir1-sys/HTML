@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI দিয়ে নিজের ভয়েস টাইপিং অ্যাপ তৈরি করার টুলস, লিংক ও ধাপে ধাপে নির্দেশিকা।">
+<title>AI দিয়ে নিজের ভয়েস টাইপিং অ্যাপ তৈরি করুন</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#172033;--muted:#617087;--primary:#3157d5;--primary2:#7048e8;--line:#e3e9f2;--soft:#edf2ff;--green:#e8f8ef}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Bengali","Hind Siliguri",system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.75}
+a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}
+.hero{padding:58px 20px 48px;background:linear-gradient(135deg,#172554,#3157d5 58%,#7048e8);color:#fff;text-align:center}
+.hero .tag{display:inline-block;padding:5px 13px;border:1px solid #ffffff55;border-radius:999px;background:#ffffff16;font-size:.9rem}
+.hero h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.3;max-width:900px;margin:18px auto 12px}
+.hero p{max-width:760px;margin:auto;color:#e6ebff;font-size:1.05rem}
+.container{width:min(1040px,calc(100% - 32px));margin:28px auto 60px}
+.section-title{font-size:1.45rem;margin:32px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 5px 20px #17255408}
+.tool-card h3{margin:0 0 5px;font-size:1.12rem}
+.tool-card p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+.link-button{display:inline-block;background:var(--soft);padding:7px 12px;border-radius:9px;font-weight:700}
+.step{display:grid;grid-template-columns:52px 1fr;gap:15px;margin:15px 0}
+.step-num{width:48px;height:48px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--primary2));color:#fff;display:grid;place-items:center;font-weight:800;font-size:1.15rem}
+.step h3{margin:0 0 7px;font-size:1.18rem}
+.step p{margin:7px 0}
+.step ul,.step ol{padding-left:23px;margin:8px 0}
+.prompt{background:#f7f8fc;border:1px solid var(--line);border-radius:12px;padding:16px;white-space:pre-wrap}
+.copy-row{display:flex;justify-content:flex-end;margin-top:10px}
+button{border:0;border-radius:9px;background:var(--primary);color:#fff;font:inherit;font-weight:700;padding:10px 16px;cursor:pointer}
+button:hover{filter:brightness(.93)}
+.note{background:var(--green);border:1px solid #c9eed7;border-radius:12px;padding:15px 17px;margin-top:15px}
+.permission-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+.permission{background:#f8faff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.permission strong{display:block;margin-bottom:4px}
+.resource-image{display:block;width:100%;max-width:700px;height:auto;border-radius:14px;margin:20px auto;border:1px solid var(--line)}
+footer{text-align:center;color:var(--muted);padding:22px;border-top:1px solid var(--line);font-size:.9rem}
+@media(max-width:600px){.hero{padding:42px 16px}.container{width:calc(100% - 22px)}.card{padding:16px}.step{grid-template-columns:40px 1fr;gap:10px}.step-num{width:38px;height:38px;border-radius:11px}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <span class="tag">ধাপে ধাপে বাংলা গাইড</span>
+  <h1>AI দিয়ে নিজের ভয়েস টাইপিং অ্যাপ তৈরি করুন!</h1>
+  <p>ভিডিওতে দেখানো গুরুত্বপূর্ণ রিসোর্স, দরকারি লিংক এবং অ্যাপ তৈরি ও সেটআপ করার নির্দেশিকা—সব একসাথে।</p>
+</header>
+
+<main class="container">
+  <section>
+    <h2 class="section-title">🔗 প্রধান টুলস ও লিংক</h2>
+    <div class="grid">
+      <article class="card tool-card"><h3>Google AI Studio</h3><p>AI-সহায়তায় অ্যাপ তৈরির কাজ শুরু করুন।</p><a class="link-button" href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer">অ্যাপ বিল্ড করুন ↗</a></article>
+      <article class="card tool-card"><h3>Groq Console</h3><p>Groq অ্যাকাউন্ট তৈরি ও API ব্যবহারের জন্য।</p><a class="link-button" href="https://console.groq.com" target="_blank" rel="noopener noreferrer">Groq Console ↗</a></article>
+      <article class="card tool-card"><h3>Groq API Keys</h3><p>API Key তৈরি ও পরিচালনা করুন।</p><a class="link-button" href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer">API Key পেজ ↗</a></article>
+      <article class="card tool-card"><h3>PRD লেখার বিকল্প</h3><p>প্রয়োজনীয়তা ও পরিকল্পনা লিখতে ব্যবহার করুন।</p><a class="link-button" href="https://chat.openai.com" target="_blank" rel="noopener noreferrer">ChatGPT ↗</a> <a class="link-button" href="https://claude.ai" target="_blank" rel="noopener noreferrer">Claude ↗</a></article>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">🧭 কাজের ধাপসমূহ</h2>
+
+    <article class="card step">
+      <div class="step-num">১</div><div>
+        <h3>📝 ধাপ ১ — PRD প্রম্পট</h3>
+        <p>নিচের প্রম্পটটি কপি করে ChatGPT বা Claude-এ পেস্ট করুন:</p>
+        <div class="prompt" id="prdPrompt">আমার একটা সিস্টেম-ওয়াইড অ্যান্ড্রয়েড ভয়েস টাইপিং অ্যাপ দরকার। যেটার মধ্যে Accessibility Service এবং Floating Overlay থাকবে—যাতে যেকোনো অ্যাপে ক্লিক করলে মেসেঞ্জার বাবলের মতো মাইক্রোফোন বাটন ভেসে ওঠে। ট্যাপ করে কথা বললে সেটা Groq Whisper API দিয়ে টেক্সটে কনভার্ট হবে এবং সরাসরি লেখার জায়গায় পেস্ট হয়ে যাবে। আমাকে Kotlin এবং Jetpack Compose আর্কিটেকচারে একটি পূর্ণাঙ্গ PRD লিখে দাও।</div>
+        <div class="copy-row"><button type="button" id="copyPrompt">প্রম্পট কপি করুন</button></div>
+        <p id="copyStatus" aria-live="polite"></p>
+      </div>
+    </article>
+
+    <article class="card step">
+      <div class="step-num">২</div><div>
+        <h3>⚙️ ধাপ ২ — AI Studio-তে অ্যাপ বানানো</h3>
+        <ol>
+          <li><a href="https://aistudio.google.com" target="_blank" rel="noopener noreferrer">aistudio.google.com</a> এ যান।</li>
+          <li>বাঁ পাশে <strong>“New app”</strong> ক্লিক করুন।</li>
+          <li><strong>“Build an Android app”</strong> সিলেক্ট করুন।</li>
+          <li>প্রথম ধাপের PRD টেক্সট পেস্ট করে Enter চাপুন।</li>
+          <li>এরর এলে চ্যাটবক্সে লিখুন: <code>fix this error: [error text]</code></li>
+          <li>চ্যাট অনেক লম্বা হয়ে গেলে <strong>“+ New chat”</strong> দিয়ে নতুন করে শুরু করতে পারেন।</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="card step">
+      <div class="step-num">৩</div><div>
+        <h3>📱 ধাপ ৩ — ফোনে সেটিংস</h3>
+        <p>ইনস্টল করার আগে Developer Options চালু করুন:</p>
+        <ol>
+          <li>Settings → <strong>About Phone</strong> এ যান।</li>
+          <li><strong>Build Number</strong>-এ ৭ বার ট্যাপ করুন। কিছু ফোনে আগে PIN দিতে হতে পারে।</li>
+          <li>Settings → System → <strong>Developer Options</strong> এ যান।</li>
+          <li><strong>USB Debugging</strong> চালু করুন।</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="card step">
+      <div class="step-num">৪</div><div>
+        <h3>💻 ধাপ ৪ — ফোনে ইনস্টল</h3>
+        <ol>
+          <li>USB ক্যাবল দিয়ে ফোন ও কম্পিউটার সংযুক্ত করুন।</li>
+          <li>ফোনে “Allow USB Debugging?” পপআপ এলে কম্পিউটারটি বিশ্বাসযোগ্য হলে <strong>Allow</strong> করুন।</li>
+          <li>AI Studio-তে <strong>Install → Install via USB</strong> নির্বাচন করুন।</li>
+          <li>ফোনে ইনস্টলেশনের অনুমতি চাইলে নির্দেশনা অনুসরণ করুন।</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="card step">
+      <div class="step-num">৫</div><div>
+        <h3>✅ ধাপ ৫ — অ্যাপ ওপেন করে পারমিশন</h3>
+        <p>অ্যাপের কাজ অনুযায়ী নিচের অনুমতিগুলো চাইতে পারে:</p>
+        <div class="permission-grid">
+          <div class="permission"><strong>🎙️ Microphone</strong>আপনার কথা রেকর্ড করার জন্য।</div>
+          <div class="permission"><strong>♿ Accessibility Service</strong>সমর্থিত অ্যাপে টাইপিং/টেক্সট ইনপুটে সহায়তার জন্য।</div>
+          <div class="permission"><strong>📲 Display over apps</strong>অন্যান্য অ্যাপের ওপর ভাসমান মাইক্রোফোন বাটন দেখানোর জন্য।</div>
+        </div>
+        <div class="note"><strong>মনে রাখুন:</strong> Accessibility ও Overlay অনুমতি শক্তিশালী। শুধু নিজের তৈরি অ্যাপকে প্রয়োজন অনুযায়ী অনুমতি দিন এবং অজানা অ্যাপকে এসব অনুমতি দেবেন না। সব অ্যাপে সরাসরি লেখা বসানো Android-এর সংস্করণ ও অ্যাপের সীমাবদ্ধতার কারণে সব সময় সম্ভব নাও হতে পারে।</div>
+      </div>
+    </article>
+
+    <article class="card step">
+      <div class="step-num">৬</div><div>
+        <h3>🔑 ধাপ ৬ — Groq API Key সেটআপ</h3>
+        <ol type="A">
+          <li><a href="https://console.groq.com" target="_blank" rel="noopener noreferrer">console.groq.com</a> এ গিয়ে অ্যাকাউন্ট তৈরি বা লগইন করুন।</li>
+          <li><a href="https://console.groq.com/keys" target="_blank" rel="noopener noreferrer"><strong>API Keys</strong></a> সেকশনে নতুন Key তৈরি করে কপি করুন।</li>
+          <li>আপনার তৈরি করা অ্যাপের Settings-এ Key পেস্ট করে Save করুন—যদি অ্যাপটি এই সুবিধা সমর্থন করে।</li>
+        </ol>
+        <div class="note"><strong>প্রো টিপস:</strong> মডেল হিসেবে <code>whisper-large-v3</code> ব্যবহার করতে পারেন; বাংলা ভয়েস শনাক্তকরণে এটি কাজে লাগতে পারে। তবে API-এর বর্তমান মডেল-সমর্থন ও সীমা Groq-এর ডকুমেন্টেশন থেকে যাচাই করুন।</div>
+        <div class="note"><strong>API Key নিরাপত্তা:</strong> Key কাউকে পাঠাবেন না, স্ক্রিনশটে দেখাবেন না বা পাবলিক GitHub-এ রাখবেন না। শুধু ফোনের অ্যাপে Key রাখলে সেটি পুরোপুরি গোপন থাকে না; প্রকাশ্য ব্যবহারের অ্যাপের জন্য নিরাপদ ব্যাকএন্ড ব্যবহার করা ভালো।</div>
+      </div>
+    </article>
+  </section>
+
+  <section class="card" style="margin-top:22px">
+    <h2 style="margin-top:0">📌 অতিরিক্ত রিসোর্স</h2>
+    <p>ভিডিও/পোস্টে উল্লেখিত MarketX Bangla রিসোর্স ছবি:</p>
+    <a href="https://cdn.phototourl.com/free/2026-09-14-e84a1e49-5ba7-46ca-a337-0bb4d79ae4ea.png" target="_blank" rel="noopener noreferrer">ছবিটি নতুন ট্যাবে খুলুন ↗</a>
+    <a href="https://cdn.phototourl.com/free/2026-09-14-e84a1e49-5ba7-46ca-a337-0bb4d79ae4ea.png" target="_blank" rel="noopener noreferrer"><img class="resource-image" src="https://cdn.phototourl.com/free/2026-09-14-e84a1e49-5ba7-46ca-a337-0bb4d79ae4ea.png" alt="MarketX Bangla রিসোর্স ছবি" loading="lazy"></a>
+  </section>
+
+  <section>
+    <h2 class="section-title">🧾 Google Sheets-এ অনলাইন ইনভেন্টরি ও ভাউচার অ্যাপ</h2>
+    <p>নিচের প্রম্পটটি ChatGPT বা Claude-এ দিলে Google Sheets ও Apps Script ব্যবহার করে দোকানের স্টক, সদস্য, জমা-বাকি এবং প্রিন্টযোগ্য ভাউচার অ্যাপ তৈরির সম্পূর্ণ কোড চাইতে পারবেন।</p>
+
+    <article class="card step">
+      <div class="step-num">১</div><div>
+        <h3>📝 অ্যাপ তৈরির প্রম্পট</h3>
+        <p>সম্পূর্ণ প্রম্পটটি কপি করে ChatGPT বা Claude-এ পেস্ট করুন:</p>
+        <div class="prompt" id="inventoryPrompt">আমি Google Sheets এবং Google Apps Script দিয়ে একটি সম্পূর্ণ, মোবাইল ও কম্পিউটার-উপযোগী অনলাইন দোকান ইনভেন্টরি, সদস্যের হিসাব এবং ভাউচার ম্যানেজমেন্ট অ্যাপ তৈরি করতে চাই। অ্যাপটি Apps Script Web App হিসেবে চলবে এবং Google Sheet-এ তথ্য সংরক্ষণ করবে। নিচের চাহিদা অনুযায়ী সম্পূর্ণ কার্যকর কোড ও সেটআপ নির্দেশনা দাও।
+
+প্রযুক্তি ও কোড:
+- Google Apps Script-এর সম্পূর্ণ Code.gs এবং Index.html কোড আলাদা করে দাও; HTML ফাইলের নাম হবে Index।
+- Google Sheet-এ প্রয়োজনীয় শিট ও হেডার স্বয়ংক্রিয়ভাবে তৈরি করার setup ফাংশন দাও। Members, Products, Vouchers, VoucherItems এবং Payments-এর মতো প্রয়োজনীয় শিট ব্যবহার করো।
+- google.script.run দিয়ে নিরাপদে সার্ভার ফাংশন কল করো। ইনপুট যাচাই, ত্রুটি বার্তা, লোডিং অবস্থা এবং সফল সংরক্ষণের বার্তা দেখাও। কোনো এরর নীরবে উপেক্ষা করো না।
+- বাংলা ভাষার পরিষ্কার, responsive UI বানাও, যেন মোবাইল, ট্যাবলেট ও কম্পিউটার থেকে ব্যবহার করা যায়।
+
+ফিচার:
+- সদস্য যোগ, সম্পাদনা ও তালিকা দেখার ব্যবস্থা রাখো।
+- পণ্য যোগ/সম্পাদনা, একক দর এবং বর্তমান স্টক রাখো; স্টক যোগ/সমন্বয়ের ব্যবস্থা দাও। বিক্রির ভাউচার করলে স্টক কমবে এবং পর্যাপ্ত স্টক না থাকলে তা আটকে স্পষ্ট বার্তা দেখাবে।
+- নতুন ভাউচারে সদস্য নির্বাচন, তারিখ এবং স্বয়ংক্রিয় ভাউচার নম্বর থাকবে। ক্রমিক নম্বর, পণ্যের নাম, পরিমাণ, একক দর ও লাইনের মোট মূল্যসহ যত খুশি পণ্যের সারি যোগ/বাদ দেওয়া যাবে।
+- প্রতিটি লাইনের মোট = পরিমাণ × একক দর; ভাউচারের মোট, পরিশোধিত টাকা এবং বকেয়া স্বয়ংক্রিয়ভাবে হিসাব করো। বকেয়া কখনো ঋণাত্মক হবে না। আংশিক ও পরবর্তী পেমেন্ট সংরক্ষণ এবং সদস্যভিত্তিক পেমেন্টের ইতিহাস দেখাও।
+- ড্যাশবোর্ডে মোট সদস্য, মোট পণ্য/স্টক, সদস্যদের কাছ থেকে মোট আদায়কৃত টাকা এবং মোট বকেয়া দেখাও। জমা ও বকেয়া যেন Payments ও ভাউচারের তথ্য থেকে সঠিকভাবে গণনা হয়; একই পেমেন্ট একাধিকবার গণনা করো না।
+- ভাউচার সংরক্ষণ, আগের ভাউচার খোঁজা/দেখা, প্রিন্ট করার উপযোগী প্রিন্ট লেআউট এবং শেয়ার বাটন দাও। শেয়ার সুবিধা না থাকলে ভাউচারের তথ্য কপি করার বিকল্প দাও।
+- একই সময়ে একাধিক ব্যবহারকারীর সংরক্ষণে ভাউচার নম্বর ও স্টক যেন ভুল না হয়; প্রয়োজনে Apps Script LockService ব্যবহার করো।
+- সংবেদনশীল তথ্য বা পাসওয়ার্ড কোডে রেখো না। Web App-এর access Google অ্যাকাউন্ট/Deploy সেটিংস দিয়ে নিয়ন্ত্রণ করার পরামর্শ দাও।
+
+উত্তরের বিন্যাস:
+১. প্রথমে Code.gs-এর সম্পূর্ণ কোড।
+২. এরপর Index.html-এর সম্পূর্ণ কোড।
+৩. Google Sheet তৈরি থেকে Apps Script-এ কোড বসানো, setup চালানো ও অনুমতি দেওয়া পর্যন্ত ধাপ।
+৪. Deploy → New deployment → Web app-এর সঠিক সেটিংস, URL খোলা এবং Google অ্যাকাউন্ট দিয়ে প্রবেশের নির্দেশনা।
+৫. কীভাবে পরীক্ষা করব এবং সাধারণ সমস্যা হলে কী করব।
+কোনো অংশ বাদ দিও না বা “বাকি কোড একই” লিখো না; কোডে ব্যবহৃত প্রতিটি সার্ভার ফাংশন ও UI ফাংশনের বাস্তব implementation দাও।</div>
+        <div class="copy-row"><button type="button" id="copyInventoryPrompt">ইনভেন্টরি প্রম্পট কপি করুন</button></div>
+        <p id="inventoryCopyStatus" aria-live="polite"></p>
+      </div>
+    </article>
+
+    <h3 class="section-title">⚙️ Google Sheets ও Apps Script সেটআপ</h3>
+    <article class="card step">
+      <div class="step-num">২</div><div>
+        <h3>📄 নতুন Google Sheet তৈরি করুন</h3>
+        <ol>
+          <li>আপনার Google অ্যাকাউন্টে লগইন করে <a href="https://sheets.google.com" target="_blank" rel="noopener noreferrer">Google Sheets</a> খুলুন।</li>
+          <li><strong>Blank spreadsheet</strong> নির্বাচন করে শিটের একটি নাম দিন, যেমন “দোকান ইনভেন্টরি”।</li>
+          <li>এই শিটের <strong>Extensions → Apps Script</strong> নির্বাচন করুন।</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="card step">
+      <div class="step-num">৩</div><div>
+        <h3>🧩 Code.gs ও Index.html-এ কোড বসান</h3>
+        <ol>
+          <li>Apps Script-এ <strong>Code.gs</strong> খুলে আগের কোড মুছে AI-কে দেওয়া প্রম্পটের উত্তরের সম্পূর্ণ Code.gs কোড পেস্ট করুন।</li>
+          <li>বাম পাশের <strong>+</strong> চাপুন → <strong>HTML</strong> নির্বাচন করুন → ফাইলের নাম <strong>Index</strong> দিন। ফাইলটি Index.html হিসেবে তৈরি হবে।</li>
+          <li><strong>Index.html</strong>-এ উত্তরের সম্পূর্ণ HTML কোড পেস্ট করুন। তারপর Save করুন।</li>
+          <li>উত্তরে দেওয়া setup ফাংশনটি নির্দেশনা অনুযায়ী একবার চালান এবং Google-এর অনুমতি চাইলে পর্যালোচনা করে অনুমতি দিন।</li>
+        </ol>
+        <div class="note"><strong>খেয়াল রাখুন:</strong> শুধু প্রম্পট কপি করলে অ্যাপ তৈরি বা শিটে ডেটা সংরক্ষণ শুরু হবে না। AI-এর উত্তরের সম্পূর্ণ কোড Apps Script-এ বসিয়ে সেটআপ ও Deploy করতে হবে।</div>
+      </div>
+    </article>
+
+    <article class="card step">
+      <div class="step-num">৪</div><div>
+        <h3>🚀 Web App হিসেবে Deploy করুন</h3>
+        <ol>
+          <li>Apps Script-এর <strong>Deploy → New deployment</strong> নির্বাচন করুন।</li>
+          <li>Type হিসেবে <strong>Web app</strong> নির্বাচন করুন।</li>
+          <li><strong>Execute as</strong> এবং <strong>Who has access</strong> অপশন আপনার প্রয়োজন অনুযায়ী সেট করুন। শুধু নিজের বা নির্দিষ্ট ব্যবহারকারীদের জন্য হলে সীমিত Google অ্যাকাউন্ট অ্যাক্সেস রাখুন।</li>
+          <li><strong>Deploy</strong> চাপুন, অনুমতি সম্পন্ন করুন এবং তৈরি হওয়া Web App URL কপি করে খুলুন। পরিবর্তিত কোড প্রকাশ করতে নতুন deployment version দিতে হতে পারে।</li>
+          <li>URL-টি মোবাইল, ট্যাবলেট বা কম্পিউটারে খুলে Google অ্যাকাউন্ট দিয়ে প্রবেশ করে সদস্য, পণ্য, ভাউচার, পেমেন্ট ও প্রিন্ট পরীক্ষা করুন।</li>
+        </ol>
+        <div class="note"><strong>নিরাপত্তা:</strong> “Anyone” অ্যাক্সেস দিলে লিংক পাওয়া অন্যরাও অ্যাপ ব্যবহার করতে পারে। ব্যক্তিগত হিসাবের জন্য অ্যাক্সেস সীমিত রাখুন এবং Google অ্যাকাউন্টের অনুমতি ছাড়া কারও সঙ্গে শিট শেয়ার করবেন না।</div>
+      </div>
+    </article>
+  </section>
+</main>
+<footer>AI অ্যাপ ও Google Sheets ইনভেন্টরি অ্যাপ তৈরির নির্দেশিকা · মোবাইল ও কম্পিউটার উপযোগী HTML পেজ</footer>
+<script>
+function bindPromptCopy(buttonId, promptId, statusId, successMessage) {
+  document.getElementById(buttonId).addEventListener('click', async function () {
+    const prompt = document.getElementById(promptId);
+    const status = document.getElementById(statusId);
+    try {
+      await navigator.clipboard.writeText(prompt.innerText);
+      status.textContent = successMessage;
+    } catch (e) {
+      const range = document.createRange();
+      range.selectNodeContents(prompt);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      status.textContent = 'স্বয়ংক্রিয় কপি করা যায়নি—নির্বাচিত লেখাটি Ctrl+C দিয়ে কপি করুন।';
+    }
+  });
+}
+
+bindPromptCopy('copyPrompt', 'prdPrompt', 'copyStatus', 'প্রম্পট কপি হয়েছে!');
+bindPromptCopy('copyInventoryPrompt', 'inventoryPrompt', 'inventoryCopyStatus', 'ইনভেন্টরি প্রম্পট কপি হয়েছে!');
+</script>
+</body>
+</html>
